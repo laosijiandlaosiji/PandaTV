@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginModelImp implements ILoginModel {
+
     @Override
     public void login(String userName, String passWord,MyNetWorkCallback<String> callback) {
         try {
