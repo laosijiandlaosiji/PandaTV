@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x120">
+        <ImageButton
+            android:layout_centerVertical="true"
+            android:id="@+id/activity_register_back"
+            android:layout_width="@dimen/x80"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/fenlei_fanhui"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x120"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:text="@string/register"
+            />
+
+    </RelativeLayout>
+
+    <include layout="@layout/tab_pager"></include>
+
+</LinearLayout>

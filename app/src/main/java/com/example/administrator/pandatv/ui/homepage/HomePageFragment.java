@@ -22,7 +22,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Override
     protected void init(View view) {
-        viewById = (TextView) view.findViewById(R.id.textView);
+        viewById = (TextView) view.findViewById(R.id.text);
         new HomePagePresenter(this);
     }
 

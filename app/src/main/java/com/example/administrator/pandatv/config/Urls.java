@@ -7,4 +7,6 @@ package com.example.administrator.pandatv.config;
 public class Urls {
     //首页
     public static final String HOMEPAGEURL = "http://www.ipanda.com/kehuduan/PAGE14501749764071042/index.json";
+//    登陆
+    public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
 }

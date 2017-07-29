@@ -14,7 +14,7 @@ public class HomePagePresenter implements HomePageContract.Presenter {
     private IHomePageModel homePageModel;
     public HomePagePresenter(HomePageContract.View homeview) {
         this.homeview = homeview;
-        this.homeview.setPresenter(this);
+        homeview.setPresenter(this);
         this.homePageModel = new HomePageModelImpl();
     }
 

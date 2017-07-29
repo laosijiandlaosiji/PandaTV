@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_collection"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.pandatv.ui.login.activity.CollectActivity">
+
+
+    <RelativeLayout
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x120">
+        <ImageButton
+            android:layout_centerVertical="true"
+            android:id="@+id/collect_back"
+            android:layout_width="@dimen/x70"
+            android:layout_height="@dimen/y70"
+            android:background="@mipmap/fenlei_fanhui"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x120"
+            android:gravity="center"
+            android:textSize="@dimen/x45"
+            android:textColor="#ffffff"
+            android:text="@string/shouchang"
+            />
+
+        <TextView
+            android:id="@+id/collect_set"
+            android:layout_marginRight="@dimen/x20"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x35"
+            android:text="编辑"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/tab_pager"></include>
+
+</LinearLayout>
