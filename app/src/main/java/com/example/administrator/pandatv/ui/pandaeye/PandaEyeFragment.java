@@ -58,6 +58,7 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
 
     @Override
     public void showPandaBean(PandaEyeBean pandaEyeBean) {
+
         List<PandaEyeBean.DataBean.BigImgBean> bigImg = pandaEyeBean.getData().getBigImg();
         pandaeye_title.setText(bigImg.get(0).getTitle());
         presenter.getrurl(pandaEyeBean.getData().getListurl());
