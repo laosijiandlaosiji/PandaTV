@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/pulltorefersh_down"
+    android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:background="#ffffff"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="@dimen/y10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RelativeLayout
+
+                android:layout_width="@dimen/x300"
+                android:layout_height="@dimen/y200">
+                <ImageView
+                    android:padding="@dimen/y2"
+                    android:scaleType="fitXY"
+                    android:id="@+id/pandaeye_iamge"
+                    android:layout_width="@dimen/x300"
+                    android:layout_height="@dimen/y200"
+                    android:src="@drawable/edit_bg"/>
+                <LinearLayout
+                    android:layout_margin="@dimen/x2"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/y40"
+                    android:background="@mipmap/lpanda_bottom_gra">
+                    <TextView
+                        android:id="@+id/pandaeye__newstime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/home_play_icon"
+                        android:drawablePadding="@dimen/x10"
+                        android:textColor="#fff"
+                        android:layout_marginLeft="@dimen/x10"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y200">
+                <TextView
+                    android:id="@+id/pandaeye__title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:lines="2"
+                    android:ellipsize="end"/>
+
+                <TextView
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/pandaeye__time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                   />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

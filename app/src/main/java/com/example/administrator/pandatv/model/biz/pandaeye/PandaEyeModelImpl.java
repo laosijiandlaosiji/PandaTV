@@ -2,6 +2,7 @@ package com.example.administrator.pandatv.model.biz.pandaeye;
 
 import com.example.administrator.pandatv.config.Urls;
 import com.example.administrator.pandatv.entity.PandaEyeBean;
+import com.example.administrator.pandatv.entity.PandaEyeListurlBean;
 import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 
 /**
@@ -12,5 +13,10 @@ public class PandaEyeModelImpl implements IPandaEyeModel {
     @Override
     public void getPandaEyeBean(MyNetWorkCallback<PandaEyeBean> callbacks) {
         iHttp.get(Urls.PANDATITLE,null,callbacks);
+    }
+
+    @Override
+    public void getPandaEyeBeanUrl(String url, MyNetWorkCallback<PandaEyeListurlBean> callback) {
+        iHttp.get(url,null,callback);
     }
 }
