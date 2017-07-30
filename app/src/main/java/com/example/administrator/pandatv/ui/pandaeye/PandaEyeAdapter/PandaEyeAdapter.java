@@ -31,6 +31,7 @@ public class PandaEyeAdapter extends RecyclerView.Adapter {
         this.context = context;
     }
 
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View inflate = View.inflate(context, R.layout.pandaeye_down_item, null);

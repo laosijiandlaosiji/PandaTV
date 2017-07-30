@@ -55,6 +55,7 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
         presenter.start();
     }
 
+
     @Override
     public void showPandaBean(PandaEyeBean pandaEyeBean) {
         List<PandaEyeBean.DataBean.BigImgBean> bigImg = pandaEyeBean.getData().getBigImg();

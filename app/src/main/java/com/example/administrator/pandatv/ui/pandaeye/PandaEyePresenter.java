@@ -20,6 +20,7 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
         this.pandview =pandview;
     }
 
+
     @Override
     public void start() {
         iPandaEyeModel.getPandaEyeBean(new MyNetWorkCallback<PandaEyeBean>() {
