@@ -1,7 +1,8 @@
 package com.example.administrator.pandatv.model.biz.homepage;
 
+import com.example.administrator.pandatv.entity.HomeListBean;
+import com.example.administrator.pandatv.entity.HomePageBean;
 import com.example.administrator.pandatv.model.biz.BaseModel;
-import com.example.administrator.pandatv.model.entity.homepagebean.HomePageBean;
 import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 
 /**
@@ -10,4 +11,5 @@ import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 
 public interface IHomePageModel extends BaseModel {
     void homepage(MyNetWorkCallback<HomePageBean> callback);
+    void homepage(String listUrl, MyNetWorkCallback<HomeListBean> callback);
 }

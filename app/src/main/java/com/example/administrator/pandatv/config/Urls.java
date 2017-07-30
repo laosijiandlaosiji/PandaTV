@@ -9,4 +9,7 @@ public class Urls {
     public static final String HOMEPAGEURL = "http://www.ipanda.com/kehuduan/PAGE14501749764071042/index.json";
 //    登陆
     public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
+
+    public static final String PANDATITLE = "http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";
+
 }

@@ -1,19 +1,32 @@
 package com.example.administrator.pandatv.ui.homepage;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
-import com.example.administrator.pandatv.model.entity.homepagebean.HomePageBean;
+import com.example.administrator.pandatv.entity.HomeListBean;
+import com.example.administrator.pandatv.entity.HomePageBean;
+import com.example.administrator.pandatv.ui.homepage.homepageadapter.HomePageAdapter;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/7/28.
  */
 
-public class HomePageFragment extends BaseFragment implements HomePageContract.View{
+public class HomePageFragment extends BaseFragment implements HomePageContract.View {
+
+    @BindView(R.id.homePage_xRecyclerView)
+    XRecyclerView homePageXRecyclerView;
     private HomePageContract.Presenter presenter;
-    private TextView viewById;
+    private List<Object> datas;
+    private List<List<HomeListBean.ListBean>> lists;
+    private HomePageAdapter adapter;
 
     @Override
     protected int getLayoutId() {
@@ -22,18 +35,21 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Override
     protected void init(View view) {
-        viewById = (TextView) view.findViewById(R.id.text);
         new HomePagePresenter(this);
+        datas = new ArrayList<Object>();
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        homePageXRecyclerView.setLayoutManager(manager);
+        homePageXRecyclerView.setPullRefreshEnabled(true);
+        homePageXRecyclerView.setLoadingMoreEnabled(false);
+        adapter = new HomePageAdapter(getActivity(),datas);
+        homePageXRecyclerView.setAdapter(adapter);
+
     }
 
     @Override
     protected void loadData() {
         presenter.start();
-    }
-
-    @Override
-    public void showHomePageBean(HomePageBean homePageBean) {
-        viewById.setText(homePageBean.toString());
     }
 
 
@@ -48,6 +64,28 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     }
 
     @Override
+    public void showHomePageBean(HomePageBean homePageBean) {
+
+        datas.clear();
+        datas.add(homePageBean.getData().getBigImg());
+        datas.add(homePageBean.getData().getArea());
+        datas.add(homePageBean.getData().getPandaeye());
+        datas.add(homePageBean.getData().getPandalive());
+        datas.add(homePageBean.getData().getInteractive());
+        datas.add(homePageBean.getData().getList());
+        List<HomePageBean.DataBean.ListBeanXXX> list = homePageBean.getData().getList();
+        String listUrl = list.get(0).getListUrl();
+        presenter.setListUrl(listUrl);
+        adapter.notifyDataSetChanged();
+        homePageXRecyclerView.refreshComplete();
+    }
+
+    @Override
+    public void showHomeListBean(HomeListBean homeListBean) {
+
+    }
+
+    @Override
     public void showMessage(String msg) {
 
     }
@@ -56,4 +94,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     public void setPresenter(HomePageContract.Presenter presenter) {
         this.presenter = presenter;
     }
+
+
+
 }

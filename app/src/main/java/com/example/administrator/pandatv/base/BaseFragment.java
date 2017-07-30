@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -20,6 +21,7 @@ public  abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(getLayoutId(), null);
+        ButterKnife.bind(this,inflate);
         return inflate;
     }
 

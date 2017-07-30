@@ -1,8 +1,11 @@
 package com.example.administrator.pandatv.ui.homepage;
 
+import android.util.Log;
+
+import com.example.administrator.pandatv.entity.HomeListBean;
+import com.example.administrator.pandatv.entity.HomePageBean;
 import com.example.administrator.pandatv.model.biz.homepage.HomePageModelImpl;
 import com.example.administrator.pandatv.model.biz.homepage.IHomePageModel;
-import com.example.administrator.pandatv.model.entity.homepagebean.HomePageBean;
 import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 
 /**
@@ -24,6 +27,22 @@ public class HomePagePresenter implements HomePageContract.Presenter {
             @Override
             public void onSuccess(HomePageBean homePageBean) {
                 homeview.showHomePageBean(homePageBean);
+                Log.d("HomePagePresenter", "homePageBean:" + homePageBean);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+                homeview.showMessage(errorMsg);
+            }
+        });
+    }
+
+    @Override
+    public void setListUrl(String listUrl) {
+        homePageModel.homepage(listUrl, new MyNetWorkCallback<HomeListBean>() {
+            @Override
+            public void onSuccess(HomeListBean homeListBean) {
+                homeview.showHomeListBean(homeListBean);
             }
 
             @Override

@@ -1,5 +1,6 @@
 package com.example.administrator.pandatv.net;
 
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -72,6 +73,7 @@ public class OkHttpUtils implements IHttp {
             }
             url = sb.deleteCharAt(sb.length() - 1).toString();
         }
+        Log.d("OkHttpUtils",sb.toString());
         Request request = new Request.Builder().url(url).build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override

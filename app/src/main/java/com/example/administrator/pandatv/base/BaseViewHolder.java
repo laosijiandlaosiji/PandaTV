@@ -10,7 +10,10 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.administrator.pandatv.net.HttpFactroy;
 
 public class BaseViewHolder extends RecyclerView.ViewHolder {
 
@@ -52,6 +55,12 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     public BaseViewHolder setText(@IdRes int viewId, String text) {
         TextView view = getView(viewId);
         view.setText(text);
+        return this;
+    }
+
+    public BaseViewHolder setImg(@IdRes int imgId,String url){
+        ImageView view = getView(imgId);
+        HttpFactroy.create().loadImage(url,view);
         return this;
     }
 

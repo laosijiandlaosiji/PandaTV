@@ -1,4 +1,4 @@
-package com.example.administrator.pandatv.model.entity.homepagebean;
+package com.example.administrator.pandatv.entity;
 
 import java.util.List;
 
