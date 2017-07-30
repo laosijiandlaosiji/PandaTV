@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <CheckBox
-        android:text="CheckBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox" />
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:background="@color/panda_bar_down"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/pandaeye_xRecyclerview">
+        </com.jcodecraeer.xrecyclerview.XRecyclerView>
 </LinearLayout>
