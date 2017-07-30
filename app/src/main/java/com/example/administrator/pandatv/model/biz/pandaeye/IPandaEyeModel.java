@@ -9,5 +9,6 @@ import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
  */
 
 public interface IPandaEyeModel extends BaseModel {
+
     void getPandaEyeBean(MyNetWorkCallback<PandaEyeBean> callbacks);
 }

@@ -5,12 +5,19 @@ import android.view.View;
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
 import com.example.administrator.pandatv.entity.PandaEyeBean;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
+import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/7/28.
  */
 
-public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.View{
+public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.View {
+    @BindView(R.id.pandaeye_xRecyclerview)
+    XRecyclerView pandaeyeXRecyclerview;
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.pandaeyefragment;
@@ -50,4 +57,6 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
     public void setPresenter(PandaEyeContract.Presenter presenter) {
 
     }
+
+
 }
