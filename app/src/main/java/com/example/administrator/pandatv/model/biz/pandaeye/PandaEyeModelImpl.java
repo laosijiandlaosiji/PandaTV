@@ -10,7 +10,7 @@ import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 
 public class PandaEyeModelImpl implements IPandaEyeModel {
     @Override
-    public void getTitleBean(MyNetWorkCallback<PandaEyeBean> callbacks) {
+    public void getPandaEyeBean(MyNetWorkCallback<PandaEyeBean> callbacks) {
         iHttp.get(Urls.PANDATITLE,null,callbacks);
     }
 }
