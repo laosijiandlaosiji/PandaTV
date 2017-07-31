@@ -32,6 +32,7 @@ public  abstract class BaseFragment extends Fragment {
         loadData();
     }
 
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
