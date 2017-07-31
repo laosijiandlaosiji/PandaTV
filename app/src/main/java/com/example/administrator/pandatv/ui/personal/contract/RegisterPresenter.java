@@ -143,7 +143,6 @@ public class RegisterPresenter implements RegisterContract.Presenter{
             @Override
             public void onSuccess(Bundle bundle) {
                 String yanzhengma = bundle.getString("yanzhengma");
-                Log.e("TAG","验证码:"+yanzhengma);
                 view.dismissEmailTips();
                 view.dismissPwdTips();
             }
