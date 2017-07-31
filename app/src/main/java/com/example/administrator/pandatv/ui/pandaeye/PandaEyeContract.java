@@ -11,6 +11,7 @@ import com.example.administrator.pandatv.entity.PandaEyeListurlBean;
 
 public interface PandaEyeContract {
 
+
     interface View extends BaseView<Presenter> {
         void showPandaBean(PandaEyeBean pandaEyeBean);
         void showUrl(PandaEyeListurlBean pandaEyeListurlBean);

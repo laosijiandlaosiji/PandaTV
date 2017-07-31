@@ -33,6 +33,8 @@ public class PandaEyeBean {
          * listurl : http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda
          */
 
+
+
         private String listurl;
         private List<BigImgBean> bigImg;
 

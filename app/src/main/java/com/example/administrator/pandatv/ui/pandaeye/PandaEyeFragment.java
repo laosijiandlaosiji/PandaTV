@@ -48,6 +48,7 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
         pandaeyeXRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         pandaeyeXRecyclerview.setAdapter(adapter);
     }
+
     public void getHeadLayout(){
         head = View.inflate(getContext(), R.layout.pandaeye_item, null);
         pandaye_imgs = (ImageView) head.findViewById(R.id.pandaye_imgs);

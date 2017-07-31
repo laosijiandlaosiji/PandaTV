@@ -14,6 +14,7 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
     private IPandaEyeModel iPandaEyeModel;
     private PandaEyeContract.View pandview;
     public PandaEyePresenter(PandaEyeContract.View pandview){
+
         this.pandview = pandview;
         this.pandview.setPresenter(this);
         iPandaEyeModel = new PandaEyeModelImpl();
