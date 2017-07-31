@@ -1,5 +1,6 @@
 package com.example.administrator.pandatv.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.example.administrator.pandatv.ui.livechina.LiveChinaFragment;
 import com.example.administrator.pandatv.ui.pandaculture.PandaCultureFragment;
 import com.example.administrator.pandatv.ui.pandaeye.PandaEyeFragment;
 import com.example.administrator.pandatv.ui.pandalive.PandaLiveFragment;
+import com.example.administrator.pandatv.ui.personal.activity.MineCenterActivity;
 import com.example.administrator.pandatv.widget.manager.ToastManager;
 
 import butterknife.BindView;
@@ -69,6 +71,7 @@ public class MainActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.personImg:
+                startActivity(new Intent(MainActivity.this, MineCenterActivity.class));
                 break;
             case R.id.hudongImg:
                 break;

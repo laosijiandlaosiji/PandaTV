@@ -49,6 +49,7 @@ public class HomePagePresenter implements HomePageContract.Presenter {
             public void onError(int errorCode, String errorMsg) {
                 homeview.showMessage(errorMsg);
             }
+
         });
     }
 }

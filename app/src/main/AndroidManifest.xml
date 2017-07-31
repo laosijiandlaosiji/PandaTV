@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.personal.activity.LoginActivity"/>
+        <activity android:name=".ui.personal.activity.CollectActivity"/>
+        <activity android:name=".ui.personal.activity.HistoryActivity"/>
+        <activity android:name=".ui.personal.activity.MineCenterActivity"/>
+        <activity android:name=".ui.personal.activity.RegistActivity"/>
+        <activity android:name=".ui.personal.activity.SetActivity"></activity>
+        <activity android:name=".ui.personal.activity.UpdateNameActivity"/>
+        <activity android:name=".ui.personal.activity.ForgetActivity"/>
+        <activity android:name=".ui.personal.activity.LoginSuccessActivity"/>
     </application>
 
 </manifest>

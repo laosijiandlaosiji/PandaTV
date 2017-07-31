@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.pandatv.ui.login.activity.MineCenterActivity">
+    tools:context="com.example.administrator.pandatv.ui.personal.activity.MineCenterActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -54,10 +54,12 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <ImageView
+                android:id="@+id/user_img"
                 android:layout_width="@dimen/x100"
                 android:layout_height="@dimen/y100"
-                android:background="@mipmap/personal_login_head"/>
+                android:src="@mipmap/personal_login_head"/>
             <TextView
+                android:id="@+id/user_nick"
                 android:layout_width="@dimen/x300"
                 android:layout_height="wrap_content"
                 android:text="@string/personalCenter_Signin"

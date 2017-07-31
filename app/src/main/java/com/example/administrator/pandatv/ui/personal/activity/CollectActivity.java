@@ -1,4 +1,4 @@
-package com.example.administrator.pandatv.ui.login.activity;
+package com.example.administrator.pandatv.ui.personal.activity;
 
 
 import android.support.design.widget.TabLayout;
