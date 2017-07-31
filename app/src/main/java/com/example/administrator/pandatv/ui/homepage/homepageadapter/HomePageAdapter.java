@@ -182,7 +182,7 @@ public class HomePageAdapter extends RecyclerView.Adapter {
     }
     private void LoadList(ListHolder listHolder,HomePageBean.DataBean.ListBeanXXX listBeanXXX){
         listHolder.livepanda_title.setText(listBeanXXX.getTitle());
-        RecyclerView livepanda_recyclerview = listHolder.livepanda_recyclerview;
+//        RecyclerView livepanda_recyclerview = listHolder.livepanda_recyclerview;
 
     }
 
