@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/7/30.
@@ -23,10 +22,10 @@ import java.util.List;
 
 public class PandaEyeAdapter extends RecyclerView.Adapter {
 
-    private ArrayList<PandaEyeListurlBean> datas;
+    private ArrayList<PandaEyeListurlBean.ListBean> datas;
     private Context context;
 
-    public PandaEyeAdapter(ArrayList<PandaEyeListurlBean> datas, Context context) {
+    public PandaEyeAdapter(ArrayList<PandaEyeListurlBean.ListBean> datas, Context context) {
         this.datas = datas;
         this.context = context;
     }
@@ -41,18 +40,18 @@ public class PandaEyeAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        PandaEyeListurlBean pandaEyeListurlBean = datas.get(position);
-        List<PandaEyeListurlBean.ListBean> list = pandaEyeListurlBean.getList();
-        viewHolder.pandaeye__time.setText(list.get(position).getTitle());
-        viewHolder.pandaeye__newstime.setText(list.get(position).getVideolength());
-        HttpFactroy.create().loadImage(list.get(position).getPicurl(),viewHolder.pandaeye_iamge);
-        long focus_date = list.get(position).getFocus_date();
+        PandaEyeListurlBean.ListBean listBean = datas.get(position);
+        viewHolder.pandaeye__time.setText(listBean.getTitle());
+        viewHolder.pandaeye__newstime.setText(listBean.getVideolength());
+        HttpFactroy.create().loadImage(listBean.getPicurl(),viewHolder.pandaeye_iamge);
+        long focus_date = listBean.getFocus_date();
         Date dat = new Date(focus_date);
         GregorianCalendar gc = new GregorianCalendar();
         gc.setTime(dat);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String time = format.format(gc.getTime());
         viewHolder.pandaeye__time.setText(time);
+        viewHolder.pandaeye_title.setText(listBean.getTitle());
     }
 
     @Override
