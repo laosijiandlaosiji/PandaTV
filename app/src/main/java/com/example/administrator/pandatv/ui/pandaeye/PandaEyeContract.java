@@ -19,6 +19,6 @@ public interface PandaEyeContract {
 
     }
     interface Presenter extends BasePresenter {
-        void getrurl(String url);
+        void geturl(String url,int a);
     }
 }

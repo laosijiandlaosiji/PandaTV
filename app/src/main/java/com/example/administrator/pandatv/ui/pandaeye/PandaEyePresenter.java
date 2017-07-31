@@ -14,7 +14,6 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
     private IPandaEyeModel iPandaEyeModel;
     private PandaEyeContract.View pandview;
     public PandaEyePresenter(PandaEyeContract.View pandview){
-
         this.pandview = pandview;
         this.pandview.setPresenter(this);
         iPandaEyeModel = new PandaEyeModelImpl();
@@ -37,9 +36,10 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
         });
     }
 
+
     @Override
-    public void getrurl(String url) {
-        iPandaEyeModel.getPandaEyeBeanUrl(url, new MyNetWorkCallback<PandaEyeListurlBean>() {
+    public void geturl(String url, int a) {
+        iPandaEyeModel.getPandaEyeBeanUrl(url, a, new MyNetWorkCallback<PandaEyeListurlBean>() {
             @Override
             public void onSuccess(PandaEyeListurlBean pandaEyeListurlBean) {
                 pandview.showUrl(pandaEyeListurlBean);

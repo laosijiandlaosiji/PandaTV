@@ -27,6 +27,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     private List<Object> datas;
     private List<List<HomeListBean.ListBean>> lists;
     private HomePageAdapter adapter;
+    private ArrayList<HomeListBean.ListBean> listBeen;
 
     @Override
     protected int getLayoutId() {
@@ -35,6 +36,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Override
     protected void init(View view) {
+        listBeen = new ArrayList<>();
         new HomePagePresenter(this);
         datas = new ArrayList<Object>();
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
@@ -42,8 +44,22 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         homePageXRecyclerView.setLayoutManager(manager);
         homePageXRecyclerView.setPullRefreshEnabled(true);
         homePageXRecyclerView.setLoadingMoreEnabled(false);
-        adapter = new HomePageAdapter(getActivity(),datas);
+        adapter = new HomePageAdapter(getActivity(),datas,listBeen);
         homePageXRecyclerView.setAdapter(adapter);
+        homePageXRecyclerView.setPullRefreshEnabled(true);
+        homePageXRecyclerView.setLoadingMoreEnabled(false);
+        homePageXRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                homePageXRecyclerView.refreshComplete();
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
+
 
     }
 
@@ -82,6 +98,9 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Override
     public void showHomeListBean(HomeListBean homeListBean) {
+
+        listBeen.addAll(homeListBean.getList());
+        adapter.notifyDataSetChanged();
 
     }
 

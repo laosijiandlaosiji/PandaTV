@@ -2,6 +2,7 @@ package com.example.administrator.pandatv.ui.homepage.homepageadapter;
 
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.pandatv.R;import com.example.administrator.pandatv.entity.HomePageBean;
+import com.example.administrator.pandatv.R;
+import com.example.administrator.pandatv.entity.HomeListBean;
+import com.example.administrator.pandatv.entity.HomePageBean;
 import com.example.administrator.pandatv.net.HttpFactroy;
 import com.example.administrator.pandatv.widget.view.BannerImageLoader;
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,23 +28,21 @@ import java.util.List;
  */
 
 public class HomePageAdapter extends RecyclerView.Adapter {
-
+    private List<HomeListBean.ListBean> homeListBeen;
     private List<Object> datas;
     private LayoutInflater inflater;
-    public static final int BIGIMG = 0;//代表轮播图
-    public static final int AREA = 1;//代表轮播图
-    public static final int PANDAEYE = 2;//代表轮播图
+    public static final int BIGIMG = 0;
+    public static final int AREA = 1;
+    public static final int PANDAEYE = 2;
     public static final int PANDALIVE = 3;
-    public static final int WALLLIVE = 4;//代表轮播图
-    public static final int CHINALIVE = 5;//代表轮播图
-    public static final int INTERACTIVE = 6;//代表轮播图
-    public static final int CCTV = 7;//代表轮播图
-    public static final int LIST = 8;//代表轮播图
+    public static final int INTERACTIVE = 4;
+    public static final int LIST = 5;
     private Context context;
 
-    public HomePageAdapter(Context context, List<Object> datas) {
+    public HomePageAdapter(Context context, List<Object> datas, List<HomeListBean.ListBean> homeListBeen) {
         this.context = context;
         this.datas = datas;
+        this.homeListBeen =homeListBeen;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -57,7 +59,7 @@ public class HomePageAdapter extends RecyclerView.Adapter {
             return PANDALIVE;
         } else if (obj instanceof HomePageBean.DataBean.InteractiveBean) {
             return INTERACTIVE;
-        } else if (position==8) {
+        } else if (position==5) {
             return LIST;
         }
         return super.getItemViewType(position);
@@ -94,8 +96,8 @@ public class HomePageAdapter extends RecyclerView.Adapter {
         switch (getItemViewType(position)) {
             case BIGIMG:
                 BigImgHolder bigImgHolder = (BigImgHolder) holder;
-//                List<HomePageBean.DataBean.BigImgBean> bigImgs = (List<HomePageBean.DataBean.BigImgBean>) datas.get(position);
-//                loadBigImg(bigImgHolder,bigImgs);
+                List<HomePageBean.DataBean.BigImgBean> bigImgs = (List<HomePageBean.DataBean.BigImgBean>) datas.get(position);
+                loadBigImg(bigImgHolder,bigImgs);
                 break;
             case AREA:
                 AreaHolder areaHolder = (AreaHolder) holder;
@@ -119,7 +121,7 @@ public class HomePageAdapter extends RecyclerView.Adapter {
                 break;
             case LIST:
                 ListHolder listHolder = (ListHolder) holder;
-                HomePageBean.DataBean.ListBeanXXX listBeanXXX = (HomePageBean.DataBean.ListBeanXXX) datas.get(position);
+                List<HomePageBean.DataBean.ListBeanXXX> listBeanXXX = (List<HomePageBean.DataBean.ListBeanXXX>) datas.get(position);
                 LoadList(listHolder,listBeanXXX);
                 break;
         }
@@ -146,20 +148,39 @@ public class HomePageAdapter extends RecyclerView.Adapter {
     }
 
 
-    private void loadBigImg(BigImgHolder bigImgHolder, List<HomePageBean.DataBean.BigImgBean> bigImgs) {
+    private void loadBigImg(final BigImgHolder bigImgHolder, final List<HomePageBean.DataBean.BigImgBean> bigImgs) {
         List<String> listBig = new ArrayList<>();
-        List<String> listTitle = new ArrayList<>();
+
         for (int i = 0; i < bigImgs.size(); i++) {
             HomePageBean.DataBean.BigImgBean bigImgBean = bigImgs.get(i);
             listBig.add(bigImgBean.getImage());
-            listTitle.add(bigImgBean.getTitle());
         }
         bigImgHolder.banner.setImageLoader(new BannerImageLoader());
         bigImgHolder.banner.isAutoPlay(true);
         bigImgHolder.banner.setDelayTime(2000);
         bigImgHolder.banner.setImages(listBig);
-        bigImgHolder.banner.setBannerTitles(listTitle);
+        bigImgHolder.banner.setIndicatorGravity(BannerConfig.RIGHT);
         bigImgHolder.banner.start();
+        bigImgHolder.banner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position<=4&&position!=0){
+                    bigImgHolder.homepage_title.setText(bigImgs.get(position-1).getTitle());
+                }else {
+                    position=0;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 
@@ -180,11 +201,15 @@ public class HomePageAdapter extends RecyclerView.Adapter {
         jcts_recyclerview.setAdapter(new AreaAdapter(context, listscroll));
 
     }
-    private void LoadList(ListHolder listHolder,HomePageBean.DataBean.ListBeanXXX listBeanXXX){
-        listHolder.livepanda_title.setText(listBeanXXX.getTitle());
-//        RecyclerView livepanda_recyclerview = listHolder.livepanda_recyclerview;
-
+    private void LoadList(ListHolder listHolder,List<HomePageBean.DataBean.ListBeanXXX> listBeanXXX ){
+        listHolder.livepanda_title.setText(listBeanXXX.get(0).getTitle());
+        RecyclerView livepanda_recyclerview = listHolder.livepanda_recyclerview;
+        livepanda_recyclerview.setLayoutManager(new LinearLayoutManager(context));
+        livepanda_recyclerview.setAdapter(new ChinaAdapter(homeListBeen,context));
     }
+
+
+
 
     private void loadPandaEye(PandaEyeHolder pandaEyeHolder, HomePageBean.DataBean.PandaeyeBean pandaeyeBean) {
         HttpFactroy.create().loadImage(pandaeyeBean.getPandaeyelogo(), pandaEyeHolder.pandaeye_img);
@@ -205,7 +230,7 @@ public class HomePageAdapter extends RecyclerView.Adapter {
         public BigImgHolder(View itemView) {
             super(itemView);
             banner = (Banner) itemView.findViewById(R.id.homepage_banner);
-//            homepage_title = (TextView) itemView.findViewById(R.id.homepage_banner);
+            homepage_title = (TextView) itemView.findViewById(R.id.homepage_title);
         }
     }
 

@@ -13,5 +13,5 @@ import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 public interface IPandaEyeModel extends BaseModel {
 
     void getPandaEyeBean(MyNetWorkCallback<PandaEyeBean> callbacks);
-    void getPandaEyeBeanUrl(String url,MyNetWorkCallback<PandaEyeListurlBean> callback);
+    void getPandaEyeBeanUrl(String url, int a, MyNetWorkCallback<PandaEyeListurlBean> callback);
 }

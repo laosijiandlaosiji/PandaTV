@@ -17,7 +17,7 @@ public class PandaEyeModelImpl implements IPandaEyeModel {
 
 
     @Override
-    public void getPandaEyeBeanUrl(String url, MyNetWorkCallback<PandaEyeListurlBean> callback) {
-        iHttp.get(url,null,callback);
+    public void getPandaEyeBeanUrl(String url, int a,MyNetWorkCallback<PandaEyeListurlBean> callback) {
+        iHttp.get(url+"pagesize=6&page="+a,null,callback);
     }
 }
