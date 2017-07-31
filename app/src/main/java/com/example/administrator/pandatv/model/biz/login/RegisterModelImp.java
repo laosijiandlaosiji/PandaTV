@@ -91,6 +91,7 @@ public class RegisterModelImp implements IRegisterModel{
             e.printStackTrace();
         }
 
+
         Map<String , String> head = new HashMap<>();
         try {
             head.put(Keys.REFERER,URLEncoder.encode("http://cbox_mobile.regclientuser.cntv.cn", "UTF-8"));

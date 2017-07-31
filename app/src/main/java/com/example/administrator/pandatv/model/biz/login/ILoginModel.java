@@ -10,6 +10,7 @@ import com.example.administrator.pandatv.net.callback.ResponseNetWork;
  */
 
 public interface ILoginModel extends BaseModel {
+
     void login(String userName, String passWord, ResponseNetWork callback);
     void getUserTicket(String userId, String jsessionid, MyNetWorkCallback<NickNameBean> callback);
 }

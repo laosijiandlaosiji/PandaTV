@@ -251,7 +251,6 @@ public class OkHttpUtils implements IHttp {
 
     }
 
-
     public void loadImgCode(String url, final MyNetWorkCallback<Bundle> callback){
         final Request request = new Request.Builder().url(url).build();
 
