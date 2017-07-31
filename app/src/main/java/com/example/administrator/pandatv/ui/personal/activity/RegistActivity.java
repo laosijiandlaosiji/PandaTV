@@ -47,6 +47,7 @@ public class RegistActivity extends BaseActivity {
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setupWithViewPager(viewPager);
 
+
     }
 
 

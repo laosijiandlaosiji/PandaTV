@@ -1,13 +1,11 @@
 package com.example.administrator.pandatv.ui.personal.activity;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseActivity;
@@ -49,16 +47,12 @@ public class UpdateNameActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.baocun:
-                CharSequence hint = personalUpdateEdit.getHint();
-                Log.e("TAG", hint + "");
-                trim = personalUpdateEdit.getText().toString().trim();
-                Toast.makeText(UpdateNameActivity.this, trim, Toast.LENGTH_SHORT).show();
+                personalUpdateEdit.getText().toString().trim();
                 Intent intent = new Intent();
 
-                intent.putExtra("edit", trim);
-
+                intent.putExtra("edit", personalUpdateEdit.getText().toString().trim());
+                SharedPreferencesUtils.putString("nickName",personalUpdateEdit.getText().toString().trim());
                 setResult(200, intent);
-
                 finish();
                 break;
         }

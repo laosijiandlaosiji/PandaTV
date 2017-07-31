@@ -83,7 +83,6 @@ public class MailboxFragment extends BaseFragment implements RegisterContract.Vi
 
     @Override
     protected void loadData() {
-//        presenter.start();
     }
 
     @Override
@@ -97,9 +96,9 @@ public class MailboxFragment extends BaseFragment implements RegisterContract.Vi
     @OnClick({ R.id.btn_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-//            case R.id.personal_reg_imgcheck:
-//                presenter.start();
-//                break;
+            case R.id.personal_reg_imgcheck:
+                presenter.start();
+                break;
             case R.id.btn_register:
                 presenter.emailRegister(editEmail.getText().toString().trim(),
                         editPasswrok.getText().toString().trim(),

@@ -173,6 +173,7 @@
             android:layout_width="@dimen/x660"
             android:layout_height="@dimen/y100"
             android:hint="@string/login_password_hint"
+            android:password="true"
             android:background="@drawable/edit_bg"
             android:backgroundTint="@color/white"/>
 
