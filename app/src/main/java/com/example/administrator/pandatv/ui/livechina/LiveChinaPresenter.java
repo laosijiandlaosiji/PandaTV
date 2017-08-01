@@ -37,7 +37,6 @@ public class LiveChinaPresenter implements LiveChinaContract.Presenter{
 
     @Override
     public void onLoad(String str) {
-//        view.showProgress();
         model.getLiveChinaBean(str, new MyNetWorkCallback<LiveChinaBean>() {
             @Override
             public void onSuccess(LiveChinaBean liveChinaBean) {
