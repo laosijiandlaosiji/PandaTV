@@ -9,13 +9,14 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
 import com.example.administrator.pandatv.ui.personal.activity.LoginActivity;
 import com.example.administrator.pandatv.ui.personal.contract.RegisterContract;
 import com.example.administrator.pandatv.ui.personal.contract.RegisterPresenter;
+import com.example.administrator.pandatv.widget.manager.ToastManager;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -110,17 +111,17 @@ public class MailboxFragment extends BaseFragment implements RegisterContract.Vi
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void closeProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override
     public void showMessage(String msg) {
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+        ToastManager.show(msg);
     }
 
     @Override
@@ -131,7 +132,6 @@ public class MailboxFragment extends BaseFragment implements RegisterContract.Vi
     @Override
     public void showImageCode(Bitmap bitmap) {
         imageView.setImageBitmap(bitmap);
-//        bitmap.compress()
     }
 
     @Override
@@ -162,6 +162,6 @@ public class MailboxFragment extends BaseFragment implements RegisterContract.Vi
 
     @Override
     public void showError(String error) {
-
+        ToastManager.show(error);
     }
 }

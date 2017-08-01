@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/liveChina_tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+            </HorizontalScrollView>
+
+            <ImageButton
+                android:id="@+id/sure"
+                android:layout_width="@dimen/x90"
+                android:layout_height="@dimen/y120"
+                android:layout_alignParentRight="true"
+                android:background="@color/white"
+                android:src="@mipmap/live_china_add" />
+
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/liveChina_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/livechina_relalayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/_no_net"
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:id="@+id/livechina_probar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/livechina_prgressbar"
+            android:indeterminateDrawable="@drawable/bars"
+            android:padding="10dp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -28,6 +28,7 @@ public class RegisterPresenter implements RegisterContract.Presenter{
 
     @Override
     public void start() {
+        view.showProgress();
         model.loadImgCode(new MyNetWorkCallback<Bundle>() {
             @Override
             public void onSuccess(Bundle bundle) {
@@ -36,11 +37,13 @@ public class RegisterPresenter implements RegisterContract.Presenter{
                 Log.e("TAG","email:"+byteArray.length);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                 view.showImageCode(bitmap);
+                view.closeProgress();
             }
 
             @Override
             public void onError(int errorCode, String errorMsg) {
-
+                view.closeProgress();
+                view.showError(errorMsg);
             }
         });
 
@@ -52,11 +55,13 @@ public class RegisterPresenter implements RegisterContract.Presenter{
                 Log.e("TAG","phone:"+byteArray.length);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                 view.showImageCode(bitmap);
+                view.closeProgress();
             }
 
             @Override
             public void onError(int errorCode, String errorMsg) {
-
+                view.closeProgress();
+                view.showError(errorMsg);
             }
         });
     }

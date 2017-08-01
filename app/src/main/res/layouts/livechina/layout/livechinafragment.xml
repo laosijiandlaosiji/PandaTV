@@ -3,9 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:text="Button"
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/liveChina_xRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button" />
+        android:layout_height="match_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
 </LinearLayout>

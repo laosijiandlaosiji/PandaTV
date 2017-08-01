@@ -41,4 +41,7 @@ public class Urls {
     public static final String PANDACULTUREDETAILS = "http://api.cntv.cn/video/videolistById";
     //跳转视频
     public static final String PANDAEYEVIDEO = "http://115.182.35.91/api/getVideoInfoForCBox.do";
+
+    //直播中国
+    public static final String LIVECHINA="http://www.ipanda.com/kehuduan/PAGE14501775094142282/index.json";
 }

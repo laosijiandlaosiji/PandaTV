@@ -22,6 +22,7 @@ import com.example.administrator.pandatv.entity.NickNameBean;
 import com.example.administrator.pandatv.ui.personal.contract.LoginContract;
 import com.example.administrator.pandatv.ui.personal.contract.LoginPresenter;
 import com.example.administrator.pandatv.utils.SharedPreferencesUtils;
+import com.example.administrator.pandatv.widget.manager.ToastManager;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -74,11 +75,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         }
     }
 
-
-    public void share(){
-
-    }
-
     @Override
     public void showProgress() {
 
@@ -91,7 +87,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void showMessage(String msg) {
-
+        ToastManager.show(msg);
     }
 
     @Override
@@ -121,7 +117,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void showError(String error) {
-        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+        ToastManager.show(error);
     }
 
     @Override
@@ -157,7 +153,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-            Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+            ToastManager.show("登录成功");
             String iconurl = data.get("iconurl");
             String name = data.get("name");
             Log.e("TAG", iconurl);
@@ -172,12 +168,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
         @Override
         public void onError(SHARE_MEDIA platform, int action, Throwable t) {
-            Toast.makeText(getApplicationContext(), "Authorize fail", Toast.LENGTH_SHORT).show();
+            ToastManager.show("Authorize fail");
         }
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-            Toast.makeText(getApplicationContext(), "Authorize cancel", Toast.LENGTH_SHORT).show();
+            ToastManager.show("Authorize cancel");
         }
     };
 

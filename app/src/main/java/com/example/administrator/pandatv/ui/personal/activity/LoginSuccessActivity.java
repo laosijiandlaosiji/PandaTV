@@ -21,15 +21,20 @@ import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseActivity;
 import com.example.administrator.pandatv.net.OkHttpUtils;
 import com.example.administrator.pandatv.utils.SharedPreferencesUtils;
+import com.example.administrator.pandatv.widget.manager.ToastManager;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginSuccessActivity extends BaseActivity {
+public class LoginSuccessActivity extends BaseActivity  implements UMAuthListener {
     @BindView(R.id.success_xin_back)
     ImageButton successXinBack;
     @BindView(R.id.iv_headicon)
@@ -100,8 +105,12 @@ public class LoginSuccessActivity extends BaseActivity {
                 startActivityForResult(new Intent(LoginSuccessActivity.this,UpdateNameActivity.class),1000);
                 break;
             case R.id.btn_login_out:
-                SharedPreferencesUtils.putBoolean("login",false);
-                startActivity(new Intent(LoginSuccessActivity.this,MineCenterActivity.class));
+                UMShareAPI.get(LoginSuccessActivity.this).deleteOauth(LoginSuccessActivity.this
+                        , SHARE_MEDIA.QQ, this);
+                UMShareAPI.get(LoginSuccessActivity.this).deleteOauth(LoginSuccessActivity.this
+                        , SHARE_MEDIA.SINA, this);
+                finish();
+
                 break;
         }
     }
@@ -196,5 +205,27 @@ public class LoginSuccessActivity extends BaseActivity {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void onStart(SHARE_MEDIA share_media) {
+
+    }
+
+    @Override
+    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+        ToastManager.show("退出成功");
+        SharedPreferencesUtils.putBoolean("login",false);
+        startActivity(new Intent(LoginSuccessActivity.this,MineCenterActivity.class));
+    }
+
+    @Override
+    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+
+    }
+
+    @Override
+    public void onCancel(SHARE_MEDIA share_media, int i) {
+
     }
 }

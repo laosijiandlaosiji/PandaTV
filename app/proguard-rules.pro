@@ -131,3 +131,11 @@
 -keep public class **.R$*{
    public static final int *;
 }
+
+#（可选）避免Log打印输出
+-assumenosideeffects class android.util.Log {
+   public static *** v(...);
+   public static *** d(...);
+   public static *** i(...);
+   public static *** w(...);
+ }
