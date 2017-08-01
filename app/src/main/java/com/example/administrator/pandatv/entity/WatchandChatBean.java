@@ -6,6 +6,7 @@ package com.example.administrator.pandatv.entity;
 
 public class WatchandChatBean {
 //
+
     private String author;
     private String message;
     private String total;
