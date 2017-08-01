@@ -11,6 +11,7 @@ import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
 import com.example.administrator.pandatv.entity.PandaLiveFragmentBean;
 import com.example.administrator.pandatv.entity.PandaLiveFragmentMultiAngleBean;
+import com.example.administrator.pandatv.entity.WatchandChatBean;
 import com.example.administrator.pandatv.ui.pandalive.fragment.LiveFragmentContract;
 import com.example.administrator.pandatv.ui.pandalive.fragment.LiveFragmentPresenter;
 
@@ -79,6 +80,11 @@ public class MuitiangleLiveFragment extends BaseFragment implements LiveFragment
             }
         });
         Log.e("TAG","JJJ"+pandaLiveFragmentMultiAngleBean.getList().get(0).getTitle());
+    }
+
+    @Override
+    public void getWatchandChatBean(WatchandChatBean watchandChatBean) {
+
     }
 
     @Override

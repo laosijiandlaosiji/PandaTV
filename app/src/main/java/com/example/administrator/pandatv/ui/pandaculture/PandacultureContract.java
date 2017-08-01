@@ -14,7 +14,6 @@ public interface PandacultureContract {
     interface View extends BaseView<Presenter>{
         void getListData(PandacultureListViewBean bean);
         void getPandacultureDetails(PandacultureDetailsBean bean);
-        void getErreo(String m);
 
     }
     interface Presenter extends BasePresenter{

@@ -5,22 +5,29 @@
 
 
 
-    <!--<com.youth.banner.Banner-->
-        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-        <!--android:id="@+id/banner"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="140dp"-->
-        <!--app:image_scale_type="center_crop"-->
-        <!--app:default_image="@drawable/home"-->
-        <!--app:indicator_height="8dp"-->
-        <!--app:indicator_width="8dp"-->
-        <!--app:indicator_margin="6dp"/>-->
-
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
+    <RelativeLayout
+        android:layout_marginTop="@dimen/y15"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x300"></com.youth.banner.Banner>
-
+        android:layout_height="@dimen/y350">
+        <com.youth.banner.Banner
+            android:id="@+id/pandaculture_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.youth.banner.Banner>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y50"
+            android:layout_alignParentBottom="true"
+            android:background="@mipmap/pe_top_txt_bg">
+            <TextView
+                android:id="@+id/pandaculture_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

@@ -21,5 +21,4 @@ public interface IHttp {
     void upload();
     void download();
     void loadImage(String url, ImageView imageView);
-
 }

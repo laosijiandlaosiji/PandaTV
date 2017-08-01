@@ -64,19 +64,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y380"
                 >
-
-                <ImageView
-                    android:src="@mipmap/play"
+                <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/y446"
-                    android:id="@+id/imageView" />
-                <!--<fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="@dimen/y380"-->
-                    <!--android:id="@+id/culture_cctv_video"-->
-                    <!--&gt;-->
-
-                <!--</fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>-->
+                    android:layout_height="@dimen/y380"
+                    android:id="@+id/culture_cctv_video"
+                    >
+                </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
             </LinearLayout>
             <RelativeLayout
                 android:id="@+id/pandaculture_rollvideo_details_zi"

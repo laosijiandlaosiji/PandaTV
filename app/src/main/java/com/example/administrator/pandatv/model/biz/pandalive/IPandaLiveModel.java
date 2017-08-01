@@ -4,6 +4,7 @@ import com.example.administrator.pandatv.entity.PandaLiveFragmentBean;
 import com.example.administrator.pandatv.entity.PandaLiveFragmentMultiAngleBean;
 import com.example.administrator.pandatv.entity.PandaLiveOtherFragentBean;
 import com.example.administrator.pandatv.entity.PandaLiveTab;
+import com.example.administrator.pandatv.entity.WatchandChatBean;
 import com.example.administrator.pandatv.model.biz.BaseModel;
 import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 
@@ -21,4 +22,7 @@ public interface IPandaLiveModel extends BaseModel {
      void getPandaLiveFragment(MyNetWorkCallback<PandaLiveFragmentBean>callback);
 
 //     void getWatchChatBean(String app, String itemId, String nature, String page, MyNetWorkCallback<WatchandChatBean> callbacks);
+
+     void getA(String app, String itemid, String nature, String page,MyNetWorkCallback<WatchandChatBean> callback);
+
 }

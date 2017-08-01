@@ -29,7 +29,7 @@ public class PandaculturePresenter implements PandacultureContract.Presenter {
 
             @Override
             public void onError(int errorCode, String errorMsg) {
-                view.getErreo(errorMsg);
+
             }
 
         });

@@ -2,6 +2,7 @@ package com.example.administrator.pandatv.ui.pandalive.fragment;
 
 import com.example.administrator.pandatv.entity.PandaLiveFragmentBean;
 import com.example.administrator.pandatv.entity.PandaLiveFragmentMultiAngleBean;
+import com.example.administrator.pandatv.entity.WatchandChatBean;
 import com.example.administrator.pandatv.model.biz.pandalive.IPandaLiveModel;
 import com.example.administrator.pandatv.model.biz.pandalive.PandaLiveModel;
 import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
@@ -45,26 +46,20 @@ public class LiveFragmentPresenter implements LiveFragmentContract.Presenter {
         });
     }
 
-//    @Override
-//    public void getWatchChat(String app, String itemId, String nature, String page, MyNetWorkCallback<WatchandChatBean> callbacks) {
-//        iPandaLiveModel.getWatchChatBean(app, itemId, nature, page, new MyNetWorkCallback<WatchandChatBean>() {
-//            @Override
-//            public void onSuccess(WatchandChatBean watchandChatBean) {
-//                Log.e("TAG",watchandChatBean.getMessage());
-//            }
-//
-//            @Override
-//            public void onError(int errorCode, String errorMsg) {
-//
-//            }
-//
-//            @Override
-//            public void getseccess(String s) {
-//
-//            }
-//        });
-//    }
+    @Override
+    public void getWatchChat(String app, String itemId, String nature, String page) {
+        iPandaLiveModel.getA(app, itemId, nature, page, new MyNetWorkCallback<WatchandChatBean>() {
+            @Override
+            public void onSuccess(WatchandChatBean watchandChatBean) {
+                view.getWatchandChatBean(watchandChatBean);
+            }
 
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+
+            }
+        });
+    }
 
 //    @Override
 //    public void OtherFragentUrl(String vsid, String n, String serviceId, String o, String of, String p) {

@@ -12,4 +12,5 @@
 
     <color name="panda_bar_down">#e4ebf1</color>
     <color name="pandlive_tabIndicatorColor">#21559c</color>
+    <color name="watch_floor">#dfdfdf</color>
 </resources>

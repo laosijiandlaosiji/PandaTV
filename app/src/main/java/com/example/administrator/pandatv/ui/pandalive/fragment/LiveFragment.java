@@ -17,6 +17,7 @@ import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
 import com.example.administrator.pandatv.entity.PandaLiveFragmentBean;
 import com.example.administrator.pandatv.entity.PandaLiveFragmentMultiAngleBean;
+import com.example.administrator.pandatv.entity.WatchandChatBean;
 import com.example.administrator.pandatv.ui.pandalive.fragment.MultiAngleLiveFragment.MuitiangleLiveFragment;
 import com.example.administrator.pandatv.ui.pandalive.fragment.WatchAndChatFragment.WatchandChatFragment;
 import com.example.administrator.pandatv.widget.view.NonSwipeableViewPager;
@@ -124,6 +125,11 @@ public class LiveFragment extends BaseFragment implements LiveFragmentContract.V
 
     @Override
     public void getPandaLiveFragmentMultiAngle(PandaLiveFragmentMultiAngleBean pandaLiveFragmentMultiAngleBean) {
+    }
+
+    @Override
+    public void getWatchandChatBean(WatchandChatBean watchandChatBean) {
+
     }
 
     @Override
