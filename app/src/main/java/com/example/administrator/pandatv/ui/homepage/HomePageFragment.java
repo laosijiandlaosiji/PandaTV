@@ -53,7 +53,9 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         homePageXRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
+                presenter.start();
                 homePageXRecyclerView.refreshComplete();
+
             }
 
             @Override
@@ -83,7 +85,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Override
     public void showHomePageBean(HomePageBean homePageBean) {
-
         datas.clear();
         datas.add(homePageBean.getData().getBigImg());
         datas.add(homePageBean.getData().getArea());
@@ -95,12 +96,11 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         String listUrl = list.get(0).getListUrl();
         presenter.setListUrl(listUrl);
         adapter.notifyDataSetChanged();
-        homePageXRecyclerView.refreshComplete();
     }
 
     @Override
     public void showHomeListBean(HomeListBean homeListBean) {
-
+        listBeen.clear();
         listBeen.addAll(homeListBean.getList());
         adapter.notifyDataSetChanged();
 

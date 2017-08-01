@@ -9,8 +9,11 @@ import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
 import com.example.administrator.pandatv.entity.PandaEyeBean;
 import com.example.administrator.pandatv.entity.PandaEyeListurlBean;
+import com.example.administrator.pandatv.entity.PandaEyeVideoBean;
 import com.example.administrator.pandatv.net.HttpFactroy;
 import com.example.administrator.pandatv.ui.pandaeye.PandaEyeAdapter.PandaEyeAdapter;
+import com.example.administrator.pandatv.widget.manager.ToastManager;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -22,7 +25,7 @@ import butterknife.BindView;
  * Created by Administrator on 2017/7/28.
  */
 
-public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.View {
+public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.View ,PandaEyeAdapter.onclicklistener{
     @BindView(R.id.pandaeye_xRecyclerview)
     XRecyclerView pandaeyeXRecyclerview;
     private ImageView pandaye_imgs;
@@ -37,6 +40,8 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
     private List<PandaEyeBean.DataBean.BigImgBean> bigImg;
     private String listurl;
 
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.pandaeyefragment;
@@ -46,25 +51,21 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
     protected void init(View view) {
         new PandaEyePresenter(this);
         datas = new ArrayList<>();
-        getHeadLayout();
         adapter = new PandaEyeAdapter(datas,getActivity());
+        adapter.setOnclicklistener(this);
         pandaeyeXRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         pandaeyeXRecyclerview.setAdapter(adapter);
 
-
     }
 
-    public void getHeadLayout(){
-        head = View.inflate(getContext(), R.layout.pandaeye_item, null);
-        pandaye_imgs = (ImageView) head.findViewById(R.id.pandaye_imgs);
-        pandaeye_title = (TextView) head.findViewById(R.id.pandaeye_title);
-        pandaeyeXRecyclerview.addHeaderView(head);
+    @Override
+    public void setrefreash() {
         pandaeyeXRecyclerview.setPullRefreshEnabled(true);
+        pandaeyeXRecyclerview.setLoadingMoreEnabled(true);
         pandaeyeXRecyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                datas.addAll(list);
-                adapter.notifyDataSetChanged();
+                presenter.start();
                 pandaeyeXRecyclerview.refreshComplete();
 
             }
@@ -73,20 +74,42 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
             public void onLoadMore() {
                 a++;
                 presenter.geturl(listurl,a);
-
+                datas.addAll(list);
             }
         });
     }
     @Override
+    public void getHeadLayout(){
+        head = View.inflate(getContext(), R.layout.pandaeye_item, null);
+        pandaye_imgs = (ImageView) head.findViewById(R.id.pandaye_imgs);
+        pandaeye_title = (TextView) head.findViewById(R.id.pandaeye_title);
+        pandaeyeXRecyclerview.addHeaderView(head);
+
+    }
+
+    @Override
+    public void setOnClicktHeadLayout() {
+        head.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = bigImg.get(0).getUrl();
+                ToastManager.show(url);
+            }
+        });
+
+    }
+
+    @Override
     protected void loadData() {
         presenter.start();
+        getHeadLayout();
+        setrefreash();
+        setOnClicktHeadLayout();
     }
 
 
     @Override
     public void showPandaBean(PandaEyeBean pandaEyeBean) {
-        pandaeyeXRecyclerview.setLoadingMoreEnabled(true);
-        pandaeyeXRecyclerview.loadMoreComplete();
         listurl = pandaEyeBean.getData().getListurl();
         bigImg = pandaEyeBean.getData().getBigImg();
         pandaeye_title.setText(bigImg.get(position).getTitle());
@@ -98,19 +121,26 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
 
     @Override
     public void showUrl(PandaEyeListurlBean pandaEyeListurlBean) {
+
         list = pandaEyeListurlBean.getList();
         datas.addAll(list);
+        pandaeyeXRecyclerview.loadMoreComplete();
         adapter.notifyDataSetChanged();
     }
 
     @Override
-    public void showProgress() {
+    public void showVideo(PandaEyeVideoBean pandaEyeVideoBean) {
 
     }
 
     @Override
-    public void closeProgress() {
+    public void showProgress() {
+        CustomDialog.show(getActivity());
+    }
 
+    @Override
+    public void closeProgress() {
+        CustomDialog.dimiss();
     }
 
     @Override
@@ -124,4 +154,9 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
     }
 
 
+    @Override
+    public void onclicklistener(int position) {
+        String guid = datas.get(position).getGuid();
+        presenter.getVodio(guid);
+    }
 }

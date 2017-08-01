@@ -2,6 +2,7 @@ package com.example.administrator.pandatv.ui.pandaeye;
 
 import com.example.administrator.pandatv.entity.PandaEyeBean;
 import com.example.administrator.pandatv.entity.PandaEyeListurlBean;
+import com.example.administrator.pandatv.entity.PandaEyeVideoBean;
 import com.example.administrator.pandatv.model.biz.pandaeye.IPandaEyeModel;
 import com.example.administrator.pandatv.model.biz.pandaeye.PandaEyeModelImpl;
 import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
@@ -23,10 +24,12 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
 
     @Override
     public void start() {
+        pandview.showProgress();
         iPandaEyeModel.getPandaEyeBean(new MyNetWorkCallback<PandaEyeBean>() {
             @Override
             public void onSuccess(PandaEyeBean pandaEyeBean) {
                 pandview.showPandaBean(pandaEyeBean);
+                pandview.closeProgress();
             }
 
             @Override
@@ -44,6 +47,7 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
             @Override
             public void onSuccess(PandaEyeListurlBean pandaEyeListurlBean) {
                 pandview.showUrl(pandaEyeListurlBean);
+                pandview.closeProgress();
             }
 
             @Override
@@ -51,6 +55,21 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
                 pandview.showMessage(errorMsg);
             }
 
+        });
+    }
+
+    @Override
+    public void getVodio(String url) {
+        iPandaEyeModel.getPandaEyeBeanVideo(url, new MyNetWorkCallback<PandaEyeVideoBean>() {
+            @Override
+            public void onSuccess(PandaEyeVideoBean pandaEyeVideoBean) {
+                pandview.showVideo(pandaEyeVideoBean);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+                pandview.showMessage(errorMsg);
+            }
         });
     }
 }

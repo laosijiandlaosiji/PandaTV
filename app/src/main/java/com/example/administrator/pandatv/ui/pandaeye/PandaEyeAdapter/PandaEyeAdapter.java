@@ -21,7 +21,6 @@ import java.util.GregorianCalendar;
  */
 
 public class PandaEyeAdapter extends RecyclerView.Adapter {
-
     private ArrayList<PandaEyeListurlBean.ListBean> datas;
     private Context context;
 
@@ -39,9 +38,9 @@ public class PandaEyeAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        PandaEyeListurlBean.ListBean listBean = datas.get(position);
+        final PandaEyeListurlBean.ListBean listBean = datas.get(position);
         viewHolder.pandaeye__time.setText(listBean.getTitle());
         viewHolder.pandaeye__newstime.setText(listBean.getVideolength());
         HttpFactroy.create().loadImage(listBean.getPicurl(),viewHolder.pandaeye_iamge);
@@ -53,6 +52,21 @@ public class PandaEyeAdapter extends RecyclerView.Adapter {
         String time = format.format(gc.getTime());
         viewHolder.pandaeye__time.setText(time);
         viewHolder.pandaeye_title.setText(listBean.getTitle());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclicklistener.onclicklistener(position);
+            }
+        });
+    }
+
+    public interface onclicklistener{
+        void onclicklistener(int position);
+    }
+    onclicklistener onclicklistener;
+
+    public void setOnclicklistener(PandaEyeAdapter.onclicklistener onclicklistener) {
+        this.onclicklistener = onclicklistener;
     }
 
     @Override
@@ -67,11 +81,10 @@ public class PandaEyeAdapter extends RecyclerView.Adapter {
         TextView pandaeye__time;
         public ViewHolder(View itemView) {
             super(itemView);
-            pandaeye_iamge= (ImageView) itemView.findViewById(R.id.pandaeye_iamge);
+            pandaeye_iamge = (ImageView) itemView.findViewById(R.id.pandaeye_iamge);
             pandaeye__newstime = (TextView) itemView.findViewById(R.id.pandaeye__newstime);
             pandaeye_title = (TextView) itemView.findViewById(R.id.pandaeye__title);
             pandaeye__time = (TextView) itemView.findViewById(R.id.pandaeye__time);
         }
-
     }
 }

@@ -39,5 +39,6 @@ public class Urls {
     public static final String PABDALIVEFRAGMENTMULTIANGLE = "http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json";
 //
     public static final String PANDACULTUREDETAILS = "http://api.cntv.cn/video/videolistById";
-
+    //跳转视频
+    public static final String PANDAEYEVIDEO = "http://115.182.35.91/api/getVideoInfoForCBox.do";
 }
