@@ -9,7 +9,7 @@ import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 /**
  * Created by li on 2017/7/30.
  */
-
+//
 public class LiveFragmentPresenter implements LiveFragmentContract.Presenter {
     private IPandaLiveModel iPandaLiveModel;
     private LiveFragmentContract.View view;
