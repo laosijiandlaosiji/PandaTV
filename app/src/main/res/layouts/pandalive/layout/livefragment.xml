@@ -43,7 +43,7 @@
         <ImageView
             android:id="@+id/pandaLive_livefragment_detailDown"
             android:src="@mipmap/live_china_detail_down"
-            android:layout_centerInParent="true"
+             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView

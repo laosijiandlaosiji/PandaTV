@@ -40,4 +40,6 @@
         <activity android:name=".ui.pandaculture.PandacultureDetailsActivity"></activity>
     </application>
 
+
+
 </manifest>
