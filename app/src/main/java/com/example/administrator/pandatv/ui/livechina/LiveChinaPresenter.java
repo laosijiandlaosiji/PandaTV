@@ -1,6 +1,5 @@
 package com.example.administrator.pandatv.ui.livechina;
 
-
 import com.example.administrator.pandatv.entity.LiveChinaBean;
 import com.example.administrator.pandatv.entity.SceneryBean;
 import com.example.administrator.pandatv.model.biz.livechina.ILiveChinaModel;
