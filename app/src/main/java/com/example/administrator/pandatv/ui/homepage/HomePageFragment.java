@@ -1,6 +1,7 @@
 package com.example.administrator.pandatv.ui.homepage;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.example.administrator.pandatv.R;
@@ -8,6 +9,7 @@ import com.example.administrator.pandatv.base.BaseFragment;
 import com.example.administrator.pandatv.entity.HomeListBean;
 import com.example.administrator.pandatv.entity.HomePageBean;
 import com.example.administrator.pandatv.ui.homepage.homepageadapter.HomePageAdapter;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -71,12 +73,12 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void closeProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override
@@ -106,7 +108,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Override
     public void showMessage(String msg) {
-
+        Log.d("HomePageFragment", msg);
     }
 
     @Override
