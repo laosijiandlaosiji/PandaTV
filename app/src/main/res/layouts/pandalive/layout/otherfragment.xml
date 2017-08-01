@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
 
+
     <in.srain.cube.views.ptr.PtrFrameLayout
         android:id="@+id/PandaLive_OtherFragment_ptr"
         android:layout_width="match_parent"

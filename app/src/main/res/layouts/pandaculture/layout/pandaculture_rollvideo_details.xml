@@ -161,6 +161,7 @@
 
 
 
+
             <in.srain.cube.views.ptr.PtrFrameLayout
                 android:id="@+id/pandaculture_rollvideo_details_ptr"
                 android:layout_width="match_parent"

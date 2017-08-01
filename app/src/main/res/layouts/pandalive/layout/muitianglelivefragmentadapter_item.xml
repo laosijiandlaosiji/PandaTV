@@ -8,6 +8,7 @@
         android:layout_width="@dimen/x240"
         android:layout_height="@dimen/y170">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/y120">

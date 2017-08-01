@@ -8,6 +8,7 @@
     android:background="#e7e4e4"
     >
 
+
   <RelativeLayout
       android:id="@+id/culture_relat"
       android:layout_width="wrap_content"
