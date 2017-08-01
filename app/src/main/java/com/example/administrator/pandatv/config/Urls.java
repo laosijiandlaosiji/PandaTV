@@ -37,7 +37,7 @@ public class Urls {
     public static final String PABDALIVEFRAGMENT = "http://www.ipanda.com/kehuduan/PAGE14501769230331752/index.json";
     //熊猫直播直播Fragment里面多视角直播数据
     public static final String PABDALIVEFRAGMENTMULTIANGLE = "http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json";
-
+//
     public static final String PANDACULTUREDETAILS = "http://api.cntv.cn/video/videolistById";
 
 }

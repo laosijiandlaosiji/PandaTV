@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PandacultureListViewBean {
 
-
+//
     private List<BigImgBean> bigImg;
     private List<ListBean> list;
 

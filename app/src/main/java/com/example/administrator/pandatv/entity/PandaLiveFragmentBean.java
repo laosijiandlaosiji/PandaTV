@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 public class PandaLiveFragmentBean {
-
+//
 
     /**
      * bookmark : {"multiple":[{"order":"1","title":"多视角直播","url":"http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json"}],"watchTalk":[{"order":"1","title":"边看边聊","url":"zhiboye_chat"}]}

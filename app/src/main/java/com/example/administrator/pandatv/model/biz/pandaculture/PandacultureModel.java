@@ -18,7 +18,7 @@ public class PandacultureModel implements IPandaCultureModel {
     public void getPandaculture(MyNetWorkCallback<PandacultureListViewBean> callback) {
         iHttp.get(Urls.PHANDACULTURE,null,callback);
     }
-
+//
     @Override
     public void getPandacultureDetails(String n, String vsid, String p , String serviceId,String em,MyNetWorkCallback<PandacultureDetailsBean> callback) {
         Map<String,String> map = new HashMap<>();

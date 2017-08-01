@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PandaLiveFragmentMultiAngleBean {
 
-
+//
     private List<ListBean> list;
 
     public List<ListBean> getList() {

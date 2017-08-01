@@ -41,7 +41,7 @@ public class PandaLiveModel implements IPandaLiveModel {
     public void getPandaLiveFragment(MyNetWorkCallback<PandaLiveFragmentBean> callback) {
         iHttp.get(Urls.PABDALIVEFRAGMENT,null,callback);
     }
-
+//
 //    @Override
 //    public void getWatchChatBean(String app, String itemId, String nature, String page, MyNetWorkCallback<WatchandChatBean> callbacks) {
 //        Map<String,String> map = new HashMap<>();

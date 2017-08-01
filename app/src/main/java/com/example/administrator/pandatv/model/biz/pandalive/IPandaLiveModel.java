@@ -17,7 +17,7 @@ public interface IPandaLiveModel extends BaseModel {
      void getPandaLiveQiTaFragment(String vsid, String n, String serviceId, String o, String of, String p,MyNetWorkCallback<PandaLiveOtherFragentBean>callback);
 
      void getPandaLiveFragmentMultiAngle(MyNetWorkCallback<PandaLiveFragmentMultiAngleBean>callback);
-
+//
      void getPandaLiveFragment(MyNetWorkCallback<PandaLiveFragmentBean>callback);
 
 //     void getWatchChatBean(String app, String itemId, String nature, String page, MyNetWorkCallback<WatchandChatBean> callbacks);
