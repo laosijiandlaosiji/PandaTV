@@ -85,7 +85,7 @@ public class OkHttpUtils implements IHttp {
                 App.context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        callback.onError(404, e.getMessage().toString());
+//                        callback.onError(404, e.getMessage().toString());
                     }
                 });
 
@@ -94,7 +94,6 @@ public class OkHttpUtils implements IHttp {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String jsonData = response.body().string();
-
                 App.context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -107,6 +106,8 @@ public class OkHttpUtils implements IHttp {
         });
 
     }
+
+
 
     @Override
     public <T> void post(String url, Map<String, String> params, Map<String, String> headers, final MyNetWorkCallback<T> callback) {
@@ -143,7 +144,7 @@ public class OkHttpUtils implements IHttp {
             }
 
             @Override
-            public void onResponse(Call call, final Response response) throws IOException {
+            public void onResponse(Call call, Response response) throws IOException {
                 final String jsonData = response.body().string();
                 //执行在子线程中
                 App.context.runOnUiThread(new Runnable() {
@@ -185,6 +186,7 @@ public class OkHttpUtils implements IHttp {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String jsonData = response.body().string();
+
                 //执行在子线程中
                 App.context.runOnUiThread(new Runnable() {
                     @Override
@@ -199,55 +201,7 @@ public class OkHttpUtils implements IHttp {
     }
 
     @Override
-    public <T> void post(String url, Map<String, String> headers, RequestBody formBody, final MyNetWorkCallback<T> callback) {
-        final Request.Builder builder = new Request.Builder();
-        if (headers != null && headers.size() > 0) {
-            Set<String> keys = headers.keySet();
-            for (String key : keys) {
-                String value = headers.get(key);
-                builder.addHeader(key, value);
-            }
-        }
-        Request request = builder.url(url).post(formBody).build();
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, final IOException e) {
-                App.context.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        callback.onError(404, e.getMessage().toString());
-                    }
-                });
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String jsonData = response.body().string();
-                //执行在子线程中
-                final Bundle bundle = new Bundle();
-                bundle.putString("yanzhengma",jsonData);
-
-                App.context.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        callback.onSuccess((T) bundle);
-                    }
-                });
-
-            }
-        });
-    }
-
-
-    @Override
-    public void upload() {
-
-    }
-
-    @Override
-    public void download() {
+    public <T> void post(String url, Map<String, String> headers, RequestBody formBody, MyNetWorkCallback<T> callback) {
 
     }
 
@@ -286,6 +240,18 @@ public class OkHttpUtils implements IHttp {
         });
 
     }
+
+
+    @Override
+    public void upload() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
     @Override
     public void loadImage(String url, ImageView imageView) {
         Glide.with(App.context).load(url).into(imageView);

@@ -3,9 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        <in.srain.cube.views.ptr.PtrFrameLayout
+            android:id="@+id/pandaculture_ptr"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+           <com.example.administrator.pandatv.widget.view.ZDJListView
+           android:id="@+id/pandaculture_xrecycler"
+           android:layout_width="match_parent"
+               android:layout_height="match_parent"></com.example.administrator.pandatv.widget.view.ZDJListView>
+        </in.srain.cube.views.ptr.PtrFrameLayout>
+
 </LinearLayout>

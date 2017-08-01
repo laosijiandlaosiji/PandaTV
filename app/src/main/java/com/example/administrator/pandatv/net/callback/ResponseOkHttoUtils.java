@@ -77,6 +77,36 @@ public class ResponseOkHttoUtils {
     }
 
 
+
+    public void gett(String url, Map<String, String> params, Map<String, String> headers, final ResponseNetWork callback){
+        Request.Builder builder = new Request.Builder();
+        if (headers != null && headers.size() > 0) {
+            Set<String> keys = headers.keySet();
+            for (String key : keys) {
+                String value = headers.get(key);
+                builder.addHeader(key, value);
+            }
+        }
+        Request request = builder.url(url).build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) {
+
+
+
+            }
+        });
+
+    }
+
+
+
+
     public void post(String url, Map<String, String> headers, RequestBody formBody, final ResponseNetWork callback) {
         Request.Builder builder = new Request.Builder();
         if (headers != null && headers.size() > 0) {

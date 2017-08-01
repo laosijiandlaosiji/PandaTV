@@ -33,6 +33,7 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
             public void onError(int errorCode, String errorMsg) {
                 pandview.showMessage(errorMsg);
             }
+
         });
     }
 
@@ -49,6 +50,7 @@ public class PandaEyePresenter implements PandaEyeContract.Presenter {
             public void onError(int errorCode, String errorMsg) {
                 pandview.showMessage(errorMsg);
             }
+
         });
     }
 }

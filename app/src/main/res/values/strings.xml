@@ -2,6 +2,7 @@
     <string name="app_name">PandaTV</string>
 
 
+    <string name="brief_introduction">简介</string>
 
 
 
@@ -9,6 +10,9 @@
 
 
 
+
+    <string name="watchChat_editHint">添加评论. . .</string>
+    <string name="send_edit">发送</string>
 
 
 

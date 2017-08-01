@@ -27,4 +27,17 @@ public class Urls {
 
     public static final String PANDATITLE = "http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";
 
+    //熊猫文化
+    public static final String PHANDACULTURE = "http://www.ipanda.com/kehuduan/xmwh/index.json";
+    //熊猫直播Tab
+    public static final String PANDALIVETAB = "http://www.ipanda.com/kehuduan/PAGE14501772263221982/index.json";
+    //熊猫直播其他Fragment
+    public static final String PANDALIVEOTHERFRAGMENT = "http://api.cntv.cn/video/videolistById";
+    //熊猫直播直播Fragment数据
+    public static final String PABDALIVEFRAGMENT = "http://www.ipanda.com/kehuduan/PAGE14501769230331752/index.json";
+    //熊猫直播直播Fragment里面多视角直播数据
+    public static final String PABDALIVEFRAGMENTMULTIANGLE = "http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json";
+
+    public static final String PANDACULTUREDETAILS = "http://api.cntv.cn/video/videolistById";
+
 }

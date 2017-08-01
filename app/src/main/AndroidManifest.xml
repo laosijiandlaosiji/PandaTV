@@ -37,6 +37,7 @@
         <activity android:name=".ui.personal.activity.UpdateNameActivity"/>
         <activity android:name=".ui.personal.activity.ForgetActivity"/>
         <activity android:name=".ui.personal.activity.LoginSuccessActivity"/>
+        <activity android:name=".ui.pandaculture.PandacultureDetailsActivity"></activity>
     </application>
 
 </manifest>

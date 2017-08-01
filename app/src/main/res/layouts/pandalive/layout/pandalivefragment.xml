@@ -2,10 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <ProgressBar
-        style="?android:attr/progressBarStyle"
+<HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.design.widget.TabLayout
+        android:id="@+id/pandalive_tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar" />
+        android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+    </HorizontalScrollView>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pandalive_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 </LinearLayout>
