@@ -103,7 +103,7 @@ public class PandaCultureFragment extends BaseFragment implements PandacultureCo
                     }
             }
         });
-
+//
 
 //        ptr.setPtrHandler(new PtrDefaultHandler2() {
 //            @Override

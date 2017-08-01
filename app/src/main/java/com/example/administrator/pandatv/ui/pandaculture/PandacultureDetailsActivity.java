@@ -100,7 +100,7 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
             @Override
             //上拉加载
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-
+//
                 if(x<3) {
                     p+=1;
                     presenter.getPandacultureDetails("6", "VSET100311356635", p + "", "panda", "1");

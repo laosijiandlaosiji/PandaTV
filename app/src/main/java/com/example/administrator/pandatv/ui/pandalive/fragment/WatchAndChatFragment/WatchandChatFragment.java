@@ -8,7 +8,7 @@ import com.example.administrator.pandatv.base.BaseFragment;
 /**
  * Created by li on 2017/7/31.
  */
-
+  
 public class WatchandChatFragment extends BaseFragment{
 
 

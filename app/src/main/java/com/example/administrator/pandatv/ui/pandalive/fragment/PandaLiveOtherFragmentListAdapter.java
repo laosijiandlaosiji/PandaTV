@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by li on 2017/7/30.
  */
-
+//
 public class PandaLiveOtherFragmentListAdapter extends BaseAdapter {
 
     private Context context;

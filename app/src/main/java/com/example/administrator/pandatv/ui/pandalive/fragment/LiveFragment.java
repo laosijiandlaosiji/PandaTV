@@ -113,7 +113,7 @@ public class LiveFragment extends BaseFragment implements LiveFragmentContract.V
             pandaLivefragmentShowLinear.setVisibility(View.GONE);
             pandaLiveLivefragmentIntroduction.setText("");
             x++;
-        }
+        }//
     }
 
     @Override

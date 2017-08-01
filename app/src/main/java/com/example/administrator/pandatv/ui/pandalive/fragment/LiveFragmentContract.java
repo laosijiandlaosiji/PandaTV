@@ -10,7 +10,7 @@ import com.example.administrator.pandatv.entity.PandaLiveFragmentMultiAngleBean;
  */
 
 public interface LiveFragmentContract {
-//
+////
     interface View extends BaseView<Presenter>{
         void getPandaLiveFragment(PandaLiveFragmentBean pandaLiveFragmentBean);
         void getPandaLiveFragmentMultiAngle(PandaLiveFragmentMultiAngleBean pandaLiveFragmentMultiAngleBean);

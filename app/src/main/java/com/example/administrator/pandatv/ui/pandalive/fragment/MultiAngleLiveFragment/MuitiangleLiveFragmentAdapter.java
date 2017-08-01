@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 public class MuitiangleLiveFragmentAdapter extends BaseAdapter {
-
+//
     private Context context;
     private List<PandaLiveFragmentMultiAngleBean.ListBean> list;
     private MuitiangleLiveFragmentAdapter.Holder holder;

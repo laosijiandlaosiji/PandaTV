@@ -23,7 +23,7 @@ public class PandacultureDetailsAdapter extends BaseAdapter{
     private Context context;
     private List<PandacultureDetailsBean.VideoBean> list;
     private Holder holder;
-
+//
     public PandacultureDetailsAdapter(Context context, List<PandacultureDetailsBean.VideoBean> list) {
         this.context = context;
         this.list = list;

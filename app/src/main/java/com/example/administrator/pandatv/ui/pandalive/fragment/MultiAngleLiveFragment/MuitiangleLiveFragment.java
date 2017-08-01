@@ -23,7 +23,7 @@ import butterknife.Unbinder;
 /**
  * Created by li on 2017/7/31.
  */
-
+//
 public class MuitiangleLiveFragment extends BaseFragment implements LiveFragmentContract.View{
     @BindView(R.id.muitianglelivefragment_gridview)
     GridView muitianglelivefragmentGridview;

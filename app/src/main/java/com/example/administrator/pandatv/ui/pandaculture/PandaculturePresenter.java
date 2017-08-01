@@ -17,7 +17,7 @@ public class PandaculturePresenter implements PandacultureContract.Presenter {
             this.view = view;
             view.setPresenter(this);
             model = new PandacultureModel();
-    }
+    }//
 
     @Override
     public void start() {

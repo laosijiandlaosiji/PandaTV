@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by li on 2017/7/30.
  */
-
+//
 public class LiveFragmentViewPagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> list;

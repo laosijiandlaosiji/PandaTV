@@ -10,7 +10,7 @@ import com.example.administrator.pandatv.entity.PandaLiveTab;
  */
 
 public interface PandaLiveContract {
-
+//
     interface View extends BaseView<Presenter>{
         void getPandaLiveData(PandaLiveTab pandaliveBean);
         void getPandaLiveOtherFragent(PandaLiveOtherFragentBean pandaLiveOtherFragentBean);

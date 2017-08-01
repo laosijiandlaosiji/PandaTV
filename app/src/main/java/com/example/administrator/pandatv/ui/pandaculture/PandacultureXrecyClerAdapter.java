@@ -59,7 +59,7 @@ public class PandacultureXrecyClerAdapter extends BaseAdapter{
             convertView.setTag(holder);
         }else {
             holder = (Holder) convertView.getTag();
-        }
+        }//
             holder.panda_culturetime.setText(list.get(position).getBrief());
             holder.panda_culturetitle.setText(list.get(position).getTitle());
             holder.panda_oculturesptime.setText(list.get(position).getVideoLength());

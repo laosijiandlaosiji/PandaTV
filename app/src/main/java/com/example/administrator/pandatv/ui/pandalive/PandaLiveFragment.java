@@ -25,7 +25,7 @@ import butterknife.Unbinder;
 /**
  * Created by Administrator on 2017/7/28.
  */
-
+//
 public class PandaLiveFragment extends BaseFragment implements PandaLiveContract.View {
 
     @BindView(R.id.pandalive_tab)

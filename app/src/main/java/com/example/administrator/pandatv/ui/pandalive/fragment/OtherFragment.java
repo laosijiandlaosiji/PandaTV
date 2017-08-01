@@ -78,7 +78,7 @@ public class OtherFragment extends BaseFragment implements PandaLiveContract.Vie
                 presenter.OtherFragentUrl(vsid, "7", "panda", "desc", "time", String.valueOf(p));
                 frame.refreshComplete();
             }
-
+//
             @Override
             //下拉刷新
             public void onRefreshBegin(PtrFrameLayout frame) {

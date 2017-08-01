@@ -10,7 +10,7 @@ import com.example.administrator.pandatv.entity.PandacultureListViewBean;
  */
 
 public interface PandacultureContract {
-
+//
     interface View extends BaseView<Presenter>{
         void getListData(PandacultureListViewBean bean);
         void getPandacultureDetails(PandacultureDetailsBean bean);
