@@ -97,12 +97,13 @@ public class MailboxFragment extends BaseFragment implements RegisterContract.Vi
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.personal_reg_imgcheck:
-                presenter.start();
+                handler.sendEmptyMessage(2000);
                 break;
             case R.id.btn_register:
                 presenter.emailRegister(editEmail.getText().toString().trim(),
                         editPasswrok.getText().toString().trim(),
-                        editYanzhengma.getText().toString().trim());
+                        editYanzhengma.getText().toString().trim(),
+                        editAgainPassword.getText().toString().trim());
                 break;
         }
     }
@@ -130,26 +131,27 @@ public class MailboxFragment extends BaseFragment implements RegisterContract.Vi
     @Override
     public void showImageCode(Bitmap bitmap) {
         imageView.setImageBitmap(bitmap);
+//        bitmap.compress()
     }
 
     @Override
     public void showEmailTips(String msg) {
-
+        hintEmail.setText(msg);
     }
 
     @Override
     public void dismissEmailTips() {
-
+        hintEmail.setText("");
     }
 
     @Override
     public void showPwdTips(String msg) {
-
+        hintPassword.setText(msg);
     }
 
     @Override
     public void dismissPwdTips() {
-
+        hintPassword.setText("");
     }
 
     @Override

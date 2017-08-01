@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseActivity;
+import com.example.administrator.pandatv.net.OkHttpUtils;
 import com.example.administrator.pandatv.utils.SharedPreferencesUtils;
 
 import java.io.File;
@@ -56,6 +57,7 @@ public class LoginSuccessActivity extends BaseActivity {
         boolean login = SharedPreferencesUtils.getBoolean("login");
         if(login) {
             ivHeadicon.setImageResource(R.mipmap.tab_panda_live_normal);
+            OkHttpUtils.getInstance().loadImage(SharedPreferencesUtils.getString("iconUrl"),ivHeadicon);
             nickName.setText(SharedPreferencesUtils.getString("nickName"));
         }
     }

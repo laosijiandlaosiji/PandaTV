@@ -92,6 +92,7 @@ public class LoginPresenter implements LoginContract.Presenter{
                 view.setLoginBean(loginBean);
                 view.dismissPwdTips();
                 view.dismissAccountTips();
+                view.showMessage(loginBean.getErrMsg());
             }
 
             @Override

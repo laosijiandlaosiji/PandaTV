@@ -65,9 +65,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30px"
-            android:background="@color/white"
-            android:gravity="center" />
+            android:layout_marginLeft="30px" />
     </RelativeLayout>
 
     <TextView

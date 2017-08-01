@@ -11,7 +11,8 @@ public interface RegisterContract {
         boolean checkEmail(String emailAddress);
         boolean checkPwd(String pwd);
         boolean checkImgCode(String imgCode);
-        void emailRegister(String email, String passWord, String imgCode);
+        boolean testPwd(String passWord,String againPassWord);
+        void emailRegister(String email, String passWord, String imgCode,String againPass);
         void phoneVerifiCodeRegister(String phone, String imgCode);
         void phoneRegisters(String phone, String passWord, String verifiCode);
     }

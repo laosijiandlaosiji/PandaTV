@@ -106,7 +106,16 @@ public class RegisterPresenter implements RegisterContract.Presenter{
     }
 
     @Override
-    public void emailRegister(String email, String passWord, String imgCode) {
+    public boolean testPwd(String passWord, String againPassWord) {
+        if(passWord.equals(againPassWord)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public void emailRegister(String email, String passWord, String imgCode,String againPass) {
         if(!checkEmail(email)) {
             return;
         }
@@ -115,6 +124,10 @@ public class RegisterPresenter implements RegisterContract.Presenter{
         }
         if(!checkImgCode(imgCode))
             return;
+
+        if(!testPwd(passWord,againPass)) {
+            return;
+        }
 
         model.emailRegister(email, passWord, jsessionid, imgCode, new MyNetWorkCallback<Register>() {
             @Override
@@ -139,10 +152,14 @@ public class RegisterPresenter implements RegisterContract.Presenter{
 
     @Override
     public void phoneVerifiCodeRegister(String phone, String imgCode) {
+        if(!checkEmail(phone)) {
+            return;
+        }
         model.phoneVerfiCodeRegister(phone, jsessionid, imgCode, new MyNetWorkCallback<Bundle>() {
             @Override
             public void onSuccess(Bundle bundle) {
                 String yanzhengma = bundle.getString("yanzhengma");
+                view.showMessage(yanzhengma);
                 view.dismissEmailTips();
                 view.dismissPwdTips();
             }
@@ -158,21 +175,27 @@ public class RegisterPresenter implements RegisterContract.Presenter{
 
     @Override
     public void phoneRegisters(String phone, String passWord, String verifiCode) {
+        if (!checkEmail(phone)){
+            return;
+        }
+        if(!checkPwd(passWord)) {
+            return;
+        }
         model.phoneRegisers(phone, passWord, verifiCode, new MyNetWorkCallback<Bundle>() {
             @Override
             public void onSuccess(Bundle register) {
                 String yanzhengma = register.getString("yanzhengma");
-//                if("success".equals(register1.getMsg())){
-//                    view.toLogin();
-//                }
-//                view.showMessage(register1.getMsg());
+                if("success".equals(yanzhengma)){
+                    view.toLogin();
+                }
+                view.showMessage(yanzhengma);
                 view.dismissEmailTips();
                 view.dismissPwdTips();
             }
 
             @Override
             public void onError(int errorCode, String errorMsg) {
-                view.showMessage(errorMsg);
+                view.showError(errorMsg);
                 view.dismissEmailTips();
                 view.dismissPwdTips();
             }

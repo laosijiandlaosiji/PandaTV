@@ -118,8 +118,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30px"
-            android:background="@color/white"
-
             />
     </RelativeLayout>
 

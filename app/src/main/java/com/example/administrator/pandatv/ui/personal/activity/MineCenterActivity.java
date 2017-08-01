@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseActivity;
+import com.example.administrator.pandatv.net.OkHttpUtils;
 import com.example.administrator.pandatv.utils.SharedPreferencesUtils;
 
 import butterknife.BindView;
@@ -42,7 +43,9 @@ public class MineCenterActivity extends BaseActivity {
     protected void init() {
         boolean login = SharedPreferencesUtils.getBoolean("login");
         if (login) {
+
             userImg.setImageResource(R.mipmap.tab_panda_live_normal);
+            OkHttpUtils.getInstance().loadImage(SharedPreferencesUtils.getString("iconUrl"),userImg);
             userNick.setText(SharedPreferencesUtils.getString("nickName"));
         }
     }

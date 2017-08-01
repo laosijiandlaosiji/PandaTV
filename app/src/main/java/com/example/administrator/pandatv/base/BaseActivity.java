@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.administrator.pandatv.app.App;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 
 import butterknife.ButterKnife;
 
@@ -22,6 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         App.context = this;
+        PushAgent.getInstance(this).onAppStart();
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         init();
@@ -31,8 +34,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         App.context = this;
+        MobclickAgent.onResume(this);       //统计时长
     }
 
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
     protected abstract int getLayoutId();
 
     protected abstract void init();

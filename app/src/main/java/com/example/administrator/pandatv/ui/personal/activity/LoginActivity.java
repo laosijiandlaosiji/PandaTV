@@ -1,7 +1,11 @@
 package com.example.administrator.pandatv.ui.personal.activity;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +22,11 @@ import com.example.administrator.pandatv.entity.NickNameBean;
 import com.example.administrator.pandatv.ui.personal.contract.LoginContract;
 import com.example.administrator.pandatv.ui.personal.contract.LoginPresenter;
 import com.example.administrator.pandatv.utils.SharedPreferencesUtils;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -59,6 +68,15 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     protected void init() {
         new LoginPresenter(this);
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
+            ActivityCompat.requestPermissions(this, mPermissionList, 123);
+        }
+    }
+
+
+    public void share(){
+
     }
 
     @Override
@@ -130,6 +148,39 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         }
     }
 
+
+    private UMAuthListener umAuthListener = new UMAuthListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //授权开始的回调
+        }
+
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+            String iconurl = data.get("iconurl");
+            String name = data.get("name");
+            Log.e("TAG", iconurl);
+            Log.e("TAG", name);
+            Intent intent = new Intent(LoginActivity.this, MineCenterActivity.class);
+            startActivity(intent);
+            SharedPreferencesUtils.putBoolean("login",true);
+            SharedPreferencesUtils.putString("nickName",name);
+            SharedPreferencesUtils.putString("iconUrl",iconurl);
+            finish();
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            Toast.makeText(getApplicationContext(), "Authorize fail", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            Toast.makeText(getApplicationContext(), "Authorize cancel", Toast.LENGTH_SHORT).show();
+        }
+    };
+
     @OnClick({R.id.login_back, R.id.weixin, R.id.qq, R.id.sina, R.id.login,R.id.forget,R.id.login_user,R.id.register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -137,10 +188,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                 finish();
                 break;
             case R.id.weixin:
+
                 break;
             case R.id.qq:
+                UMShareAPI.get(this).getPlatformInfo(LoginActivity.this,SHARE_MEDIA.QQ,umAuthListener);
                 break;
             case R.id.sina:
+                UMShareAPI.get(this).getPlatformInfo(LoginActivity.this, SHARE_MEDIA.SINA, umAuthListener);
                 break;
             case R.id.login:
                 presenter.login(loginName.getText().toString().trim(), loginPwd.getText().toString().trim());
@@ -152,5 +206,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                 startActivity(new Intent(LoginActivity.this,RegistActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+
     }
 }
