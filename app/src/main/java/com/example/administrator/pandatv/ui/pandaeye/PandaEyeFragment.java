@@ -130,7 +130,7 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContract.V
 
     @Override
     public void showVideo(PandaEyeVideoBean pandaEyeVideoBean) {
-
+        ToastManager.show(pandaEyeVideoBean.getTitle());
     }
 
     @Override
