@@ -1,7 +1,9 @@
 package com.example.administrator.pandatv.ui.pandaculture;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -12,14 +14,21 @@ import android.widget.Toast;
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseActivity;
 import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
+import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
 import com.example.administrator.pandatv.entity.PandacultureListViewBean;
+import com.example.administrator.pandatv.utils.ShareUtils;
+import com.example.administrator.pandatv.utils.SharedPreferencesUtils;
+import com.example.administrator.pandatv.utils.VideoPlaybackUtil;
+import com.example.administrator.pandatv.widget.view.JCPlayBackActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCUserAction;
 import fm.jiecao.jcvideoplayer_lib.JCUserActionStandard;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
@@ -64,6 +73,12 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
     int x = 1;
     private PandacultureDetailsBean.VideosetBean._$0Bean bean1;
     private ArrayList<PandacultureDetailsBean.VideoBean> arrayList;
+    private ArrayList<String> stringArrayList;
+    private List<PandacultureDetailsBean.VideoBean> video;
+    private PandacultureDetailsAdapter pandacultureDetailsAdapter;
+    private String url;
+    private String title;
+
 
     @Override
     protected int getLayoutId() {
@@ -73,17 +88,17 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
     @Override
     protected void init() {
         presenter = new PandaculturePresenter(this);
-
         presenter.getPandacultureDetails("6", "VSET100311356635", p + "", "panda", "1");
+        stringArrayList = new ArrayList<>();
+        String vid = SharedPreferencesUtils.getString("vid");
+        Log.e("PandacultureDetailsActi", "ha666"+vid);
+        presenter.getPandacultureDetailsSP(""+vid);
         presenter.start();
 
-        jcvideoplayer.setUp("http://tv.cntv.cn/video/VSET100311356635/e2ce1fa0a295447cb242235167d52ca8",JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"666");
-//        jcvideoplayer.onStatePlaybackBufferingStart();
-        jcvideoplayer.setJcUserAction(new MyUserActionStandard());
-        jcvideoplayer.startVideo();
+
 
         arrayList = new ArrayList<>();
-        final PandacultureDetailsAdapter pandacultureDetailsAdapter = new PandacultureDetailsAdapter(this, arrayList);
+        pandacultureDetailsAdapter = new PandacultureDetailsAdapter(this, arrayList);
         pandacultureRollvideoDetailsListview.setAdapter(pandacultureDetailsAdapter);
         PtrClassicDefaultHeader header = new PtrClassicDefaultHeader(this);
         header.setPadding(0, 15, 0, 10);
@@ -105,16 +120,22 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
             @Override
             //上拉加载
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-//
-                if (x < 3) {
-                    p += 1;
+                p++;
+                if (p==2) {
                     presenter.getPandacultureDetails("6", "VSET100311356635", p + "", "panda", "1");
-                    presenter.start();
                     pandacultureDetailsAdapter.notifyDataSetChanged();
-                } else {
+                }
+                if (p==3){
                     Toast.makeText(PandacultureDetailsActivity.this, "没有更多数据了", Toast.LENGTH_SHORT).show();
+                    pandacultureDetailsAdapter.notifyDataSetChanged();
+                }
+                if(p==4) {
+                    p--;
                 }
                 frame.refreshComplete();
+
+
+
             }
 
             @Override
@@ -122,7 +143,6 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
             public void onRefreshBegin(PtrFrameLayout frame) {
                 p = 1;
                 presenter.getPandacultureDetails("6", "VSET100311356635", p + "", "panda", "1");
-                presenter.start();
                 pandacultureDetailsAdapter.notifyDataSetChanged();
                 frame.refreshComplete();
             }
@@ -138,7 +158,44 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
     @Override
     public void getPandacultureDetails(PandacultureDetailsBean bean) {
         arrayList.addAll(bean.getVideo());
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                pandacultureDetailsAdapter.notifyDataSetChanged();
+            }
+        });
         bean1 = bean.getVideoset().get_$0();
+        video = bean.getVideo();
+        String vid = video.get(0).getVid();
+        SharedPreferencesUtils.putString("vid",vid);
+
+        pandacultureRollvideoDetailsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferencesUtils.putString("vid",video.get(position).getVid());
+            }
+        });
+
+        Log.d("PandacultureDetailsActi", vid);
+//        for (int i=0;i<video.size();i++){
+//
+////            stringArrayList.add(vid);
+//        }
+//        presenter.getPandacultureDetailsSP(""+vid);
+    }
+
+    @Override
+    public void getPandacultureDetailsSP(PandacultureDetailsSPBean bean) {
+        Log.d("PandacultureDetailsActi", "+++++"+bean.getColumn());
+        url = bean.getVideo().getChapters().get(0).getUrl();
+        title = bean.getTitle();
+        Log.d("PandacultureDetailsActi","url:"+ url);
+        //http://tv.cntv.cn/video/VSET100311356635/e2ce1fa0a295447cb242235167d52ca8
+//        jcvideoplayer.setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+////        jcvideoplayer.onStatePlaybackBufferingStart();
+//        jcvideoplayer.setJcUserAction(new MyUserActionStandard());
+//        jcvideoplayer.startVideo();
+                VideoPlaybackUtil.getIn(PandacultureDetailsActivity.this,jcvideoplayer).setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
     }
 
     @Override
@@ -158,7 +215,7 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
         this.presenter = presenter;
     }
 
-    @OnClick({R.id.goback_butt, R.id.pandaculture_rollvideo_details_zi})
+    @OnClick({R.id.goback_butt, R.id.pandaculture_rollvideo_details_zi,R.id.share,R.id.collect_no})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.goback_butt:
@@ -180,11 +237,20 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
                 }
 
                 break;
+            case R.id.share:
+                ShareUtils.share(this,"我又帅了","");
+                break;
+            case R.id.collect_no:
+                Intent intent = new Intent(PandacultureDetailsActivity.this, JCPlayBackActivity.class);
+                intent.putExtra("url",url);
+                intent.putExtra("title",title);
+                startActivity(intent);
+                break;
         }
+
     }
 
-
-    class MyUserActionStandard implements JCUserActionStandard {
+    public class MyUserActionStandard implements JCUserActionStandard {
 
         @Override
         public void onEvent(int type, String url, int screen, Object... objects) {
@@ -242,5 +308,15 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
         }
     }
 
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        JCVideoPlayer.releaseAllVideos();
+//    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos();
+    }
 }

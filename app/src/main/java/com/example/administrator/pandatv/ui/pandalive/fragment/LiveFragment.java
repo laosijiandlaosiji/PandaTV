@@ -1,6 +1,9 @@
 package com.example.administrator.pandatv.ui.pandalive.fragment;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -37,7 +40,7 @@ import static com.example.administrator.pandatv.R.id.panda_livefragment_showLine
  * Created by li on 2017/7/30.
  */
 
-public class LiveFragment extends BaseFragment implements LiveFragmentContract.View{
+public class LiveFragment extends BaseFragment implements LiveFragmentContract.View {
     Unbinder unbinder;
     @BindView(R.id.pandaLive_livefragment_pandaFirst)
     ImageView pandaLiveLivefragmentPandaFirst;
@@ -62,11 +65,15 @@ public class LiveFragment extends BaseFragment implements LiveFragmentContract.V
     private LiveFragmentContract.Presenter presenter;
     private List<PandaLiveFragmentBean.LiveBean> live;
     int x=1;
+    private boolean flg = false;
+//    private OnScrollToBottomListener mOnScrollToBottomListener;
+
     @Override
     protected int getLayoutId() {
         return R.layout.livefragment;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void init(View view) {
         presenter = new LiveFragmentPresenter(this);
@@ -79,7 +86,90 @@ public class LiveFragment extends BaseFragment implements LiveFragmentContract.V
         pandaLiveLivefragmentMainPager.setAdapter(liveFragmentViewPagerAdapter);
         pandaLiveLivefragmentBookMarkTab.setupWithViewPager(pandaLiveLivefragmentMainPager);
         pandaLiveLivefragmentBookMarkTab.setTabMode(TabLayout.MODE_FIXED);
+
+
+
+        pandaLiveLivefragmentBookMarkTab.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 1) {
+                    Intent intent = new Intent();
+                    intent.setAction("com.pandas.tag");
+                    getActivity().sendBroadcast(intent);
+                    ViewGroup.LayoutParams layoutParams = pandaLiveLivefragmentMainPager.getLayoutParams();
+                    if (flg) {
+                        layoutParams.height = 700;
+                        //            让上面的view横向   获取焦点 防止点击时跳到下面gridview  里的 第一条
+                        pandaLiveLivefragmentShowIntroduction.setFocusable(true);
+                        pandaLiveLivefragmentShowIntroduction.setFocusableInTouchMode(true);
+                        pandaLiveLivefragmentShowIntroduction.requestFocus();
+                    } else {
+                        layoutParams.height = 550;
+                        //          把上面的tablayout设为焦点 防止 直接显示第一条
+                        pandaLiveLivefragmentBookMarkTab.setFocusable(true);
+                        pandaLiveLivefragmentBookMarkTab.setFocusableInTouchMode(true);
+                        pandaLiveLivefragmentBookMarkTab.requestFocus();
+                    }
+                    pandaLiveLivefragmentMainPager.setLayoutParams(layoutParams);
+                } else if (tab.getPosition() == 0) {
+                    ViewGroup.LayoutParams layoutParams = pandaLiveLivefragmentMainPager.getLayoutParams();
+                    layoutParams.height = 1800;
+                    if(flg) {
+                        //            让上面的view横向   获取焦点 防止点击时跳到下面gridview  里的 第一条
+                        pandaLiveLivefragmentShowIntroduction.setFocusable(true);
+                        pandaLiveLivefragmentShowIntroduction.setFocusableInTouchMode(true);
+                        pandaLiveLivefragmentShowIntroduction.requestFocus();
+
+                    }else {
+                        //          把上面的tablayout设为焦点 防止 直接显示第一条
+                        pandaLiveLivefragmentBookMarkTab.setFocusable(true);
+                        pandaLiveLivefragmentBookMarkTab.setFocusableInTouchMode(true);
+                        pandaLiveLivefragmentBookMarkTab.requestFocus();
+
+                    }
+                    pandaLiveLivefragmentMainPager.setLayoutParams(layoutParams);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+
+//        liveMainStick.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                // 滑动的距离加上本身的高度与子View的高度对比
+//                if(scrollX + getHeight() >=  getChildAt(0).getMeasuredHeight()){
+//                    // ScrollView滑动到底部
+//                    if(mOnScrollToBottomListener != null) {
+//                        mOnScrollToBottomListener.onScrollToBottom();
+//                    }
+//                } else {
+//                    if(mOnScrollToBottomListener != null) {
+//                        mOnScrollToBottomListener.onNotScrollToBottom();
+//                    }
+//                }
+//            }
+//        });
     }
+//    public void setScrollToBottomListener(OnScrollToBottomListener listener) {
+//
+//        this.mOnScrollToBottomListener = listener;
+//    }
+//
+//    public interface OnScrollToBottomListener {
+//        void onScrollToBottom();
+//        void onNotScrollToBottom();
+//    }
 
     @Override
     protected void loadData() {

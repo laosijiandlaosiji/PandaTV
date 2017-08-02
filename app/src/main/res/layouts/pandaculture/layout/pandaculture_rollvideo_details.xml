@@ -158,11 +158,11 @@
             <in.srain.cube.views.ptr.PtrFrameLayout
                 android:id="@+id/pandaculture_rollvideo_details_ptr"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y500">
+                android:layout_height="@dimen/y400">
                 <ListView
                     android:id="@+id/pandaculture_rollvideo_details_listview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></ListView>
+                    android:layout_height="@dimen/y400"></ListView>
             </in.srain.cube.views.ptr.PtrFrameLayout>
 
             <LinearLayout

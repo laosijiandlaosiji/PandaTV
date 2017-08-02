@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
 import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
+import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
 import com.example.administrator.pandatv.entity.PandacultureListViewBean;
 import com.example.administrator.pandatv.widget.view.BannerImageLoader;
 import com.example.administrator.pandatv.widget.view.WebViewActivity;
@@ -216,6 +217,11 @@ public class PandaCultureFragment extends BaseFragment implements PandacultureCo
 
     @Override
     public void getPandacultureDetails(PandacultureDetailsBean bean) {
+
+    }
+
+    @Override
+    public void getPandacultureDetailsSP(PandacultureDetailsSPBean bean) {
 
     }
 

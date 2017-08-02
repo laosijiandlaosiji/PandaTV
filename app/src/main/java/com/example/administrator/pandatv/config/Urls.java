@@ -47,4 +47,7 @@ public class Urls {
 
     //直播中国
     public static final String LIVECHINA="http://www.ipanda.com/kehuduan/PAGE14501775094142282/index.json";
+
+    //详情视频
+    public static final String PANDACULTUREDETAILSSP="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
 }

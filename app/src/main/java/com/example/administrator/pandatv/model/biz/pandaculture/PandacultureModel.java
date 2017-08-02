@@ -1,8 +1,9 @@
 package com.example.administrator.pandatv.model.biz.pandaculture;
 
-import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
-import com.example.administrator.pandatv.entity.PandacultureListViewBean;
 import com.example.administrator.pandatv.config.Urls;
+import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
+import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
+import com.example.administrator.pandatv.entity.PandacultureListViewBean;
 import com.example.administrator.pandatv.net.callback.MyNetWorkCallback;
 
 import java.util.HashMap;
@@ -28,5 +29,12 @@ public class PandacultureModel implements IPandaCultureModel {
         map.put("serviceId",serviceId);
         map.put("em",em);
         iHttp.get(Urls.PANDACULTUREDETAILS,map,callback);
+    }
+
+    @Override
+    public void getPandacultureSP(String pid, MyNetWorkCallback<PandacultureDetailsSPBean> callback) {
+        Map<String,String> map = new HashMap<>();
+        map.put("pid",pid);
+        iHttp.get(Urls.PANDACULTUREDETAILSSP,map,callback);
     }
 }

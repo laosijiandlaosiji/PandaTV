@@ -59,7 +59,7 @@
     <ScrollView
         android:id="@+id/live_main_stick"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -94,6 +94,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/y2"/>
             </LinearLayout>
+        <LinearLayout
+            android:background="@color/panda_bar_down"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
                 <android.support.design.widget.TabLayout
                     android:background="@color/white"
                     app:tabSelectedTextColor="@color/pandlive_tabIndicatorColor"
@@ -103,8 +108,8 @@
                     android:id="@+id/pandaLive_livefragment_bookMark_tab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
-        </LinearLayout>
-    </ScrollView>
+
+
                 <com.example.administrator.pandatv.widget.view.NonSwipeableViewPager
                     android:background="@color/white"
                     android:layout_marginTop="@dimen/y6"
@@ -112,8 +117,9 @@
                     android:layout_marginRight="@dimen/x11"
                     android:id="@+id/pandaLive_livefragment_mainPager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></com.example.administrator.pandatv.widget.view.NonSwipeableViewPager>
-
-
+                    android:layout_height="@dimen/y1200"></com.example.administrator.pandatv.widget.view.NonSwipeableViewPager>
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

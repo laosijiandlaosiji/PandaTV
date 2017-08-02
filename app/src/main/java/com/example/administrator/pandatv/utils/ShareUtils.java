@@ -13,7 +13,7 @@ public class ShareUtils {
 
     public  static void share(final BaseActivity context, String sting, String imgUrl){
         new ShareAction(context)
-                .withText("hello")
+                .withText(sting)
                 .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
                 .setCallback(new UMShareListener() {
                     @Override

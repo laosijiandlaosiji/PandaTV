@@ -40,6 +40,11 @@
         <activity android:name=".ui.personal.activity.LoginSuccessActivity"/>
         <activity android:name=".ui.pandaculture.PandacultureDetailsActivity"></activity>
         <activity android:name=".widget.view.WebViewActivity"></activity>
+        <activity android:name=".widget.view.JCPlayBackActivity"
+                  android:configChanges="orientation|keyboardHidden|screenSize"
+            >
+
+        </activity>
 
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
@@ -87,7 +92,6 @@
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
             android:value="83545cd1370a7bb1359cf94242324a13"></meta-data>
-        <activity android:name=".ui.pandaculture.PandacultureDetailsActivity"></activity>
     </application>
 
 
