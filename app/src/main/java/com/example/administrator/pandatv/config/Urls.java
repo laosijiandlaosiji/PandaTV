@@ -50,4 +50,5 @@ public class Urls {
 
     //详情视频
     public static final String PANDACULTUREDETAILSSP="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
+
 }

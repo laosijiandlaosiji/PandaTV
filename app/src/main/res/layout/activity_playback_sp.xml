@@ -24,6 +24,12 @@
                 />
 
             <ImageView
+                android:id="@+id/imgfanhui"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/y50"
+                android:src="@mipmap/play_fullsrcee_share"
+                android:layout_alignParentLeft="true"
+                /><ImageView
                 android:id="@+id/img1"
                 android:layout_width="@dimen/x50"
                 android:layout_height="@dimen/y50"

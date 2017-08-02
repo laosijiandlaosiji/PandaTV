@@ -1,6 +1,7 @@
 package com.example.administrator.pandatv.model.biz.pandaculture;
 
 import com.example.administrator.pandatv.config.Urls;
+import com.example.administrator.pandatv.entity.PandaCultureSYSPBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
 import com.example.administrator.pandatv.entity.PandacultureListViewBean;
@@ -36,5 +37,12 @@ public class PandacultureModel implements IPandaCultureModel {
         Map<String,String> map = new HashMap<>();
         map.put("pid",pid);
         iHttp.get(Urls.PANDACULTUREDETAILSSP,map,callback);
+    }
+
+    @Override
+    public void getcultureSP(String pid, MyNetWorkCallback<PandaCultureSYSPBean> callback) {
+        Map<String,String> map = new HashMap<>();
+        map.put("pid",pid);
+        iHttp.get(Urls.PANDAEYEVIDEO,map,callback);
     }
 }

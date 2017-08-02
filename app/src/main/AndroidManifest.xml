@@ -41,7 +41,7 @@
         <activity android:name=".ui.pandaculture.PandacultureDetailsActivity"></activity>
         <activity android:name=".widget.view.WebViewActivity"></activity>
         <activity android:name=".widget.view.JCPlayBackActivity"
-                  android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             >
 
         </activity>

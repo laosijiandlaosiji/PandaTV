@@ -13,11 +13,13 @@ import android.widget.TextView;
 
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseFragment;
+import com.example.administrator.pandatv.entity.PandaCultureSYSPBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
 import com.example.administrator.pandatv.entity.PandacultureListViewBean;
 import com.example.administrator.pandatv.widget.view.BannerImageLoader;
 import com.example.administrator.pandatv.widget.view.CustomDialog;
+import com.example.administrator.pandatv.widget.view.JCPlayBackActivity;
 import com.example.administrator.pandatv.widget.view.WebViewActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -56,6 +58,10 @@ public class PandaCultureFragment extends BaseFragment implements PandacultureCo
     private List<PandacultureListViewBean.ListBean> livelist;
     private TextView textView;
     private List<PandacultureListViewBean.BigImgBean> bigImg1;
+    private PandaCultureSYSPBean.HlsCdnInfoBean hls_cdn_info;
+    private String url;
+    private String title;
+    private Intent intent1;
 
     @Override
     protected int getLayoutId() {
@@ -65,6 +71,8 @@ public class PandaCultureFragment extends BaseFragment implements PandacultureCo
     @Override
     protected void init(View view) {
         pan = new PandaculturePresenter(this);
+
+
         arrayList = new ArrayList<>();
         View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.panda_culture_headerview, null);
         banner = (Banner) inflate.findViewById(R.id.pandaculture_banner);
@@ -108,10 +116,23 @@ public class PandaCultureFragment extends BaseFragment implements PandacultureCo
         pandacultureXrecycler.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(livelist.get(0).getType().equals("2")) {
+                if(livelist.get(position).getType().equals("2")) {
                         Intent intent = new Intent(getActivity(),PandacultureDetailsActivity.class);
                         startActivity(intent);
-                    }
+                    }else {
+                    pan.getcultureSP(livelist.get(position).getId());
+//                    intent1 = new Intent(getActivity(),JCPlayBackActivity.class);
+////
+//                    startActivity(intent1);
+                }
+
+//                if(livelist.get(position).getType().equals("1")) {
+//                    intent1 = new Intent(getActivity(),JCPlayBackActivity.class);
+//
+//                    startActivity(intent1);
+//                }
+
+
             }
         });
 //
@@ -223,6 +244,18 @@ public class PandaCultureFragment extends BaseFragment implements PandacultureCo
 
     @Override
     public void getPandacultureDetailsSP(PandacultureDetailsSPBean bean) {
+
+    }
+
+    @Override
+    public void getcultureSP(PandaCultureSYSPBean pandaCultureSYSPBean) {
+        Log.d("PandaCultureFragment", "pandaCultureSYSPBean.getHls_cdn_info(liyan6666666:):" + ""+pandaCultureSYSPBean.getVideo().getChapters().get(0).getUrl());
+        url = pandaCultureSYSPBean.getVideo().getChapters().get(0).getUrl();
+        title = pandaCultureSYSPBean.getTitle();
+        intent1 = new Intent(getActivity(),JCPlayBackActivity.class);
+        intent1.putExtra("url",url);
+        intent1.putExtra("title",title);
+                    startActivity(intent1);
 
     }
 

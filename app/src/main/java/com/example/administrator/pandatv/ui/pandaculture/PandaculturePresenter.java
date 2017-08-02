@@ -1,5 +1,6 @@
 package com.example.administrator.pandatv.ui.pandaculture;
 
+import com.example.administrator.pandatv.entity.PandaCultureSYSPBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
 import com.example.administrator.pandatv.entity.PandacultureListViewBean;
@@ -60,6 +61,21 @@ public class PandaculturePresenter implements PandacultureContract.Presenter {
             @Override
             public void onSuccess(PandacultureDetailsSPBean pandacultureDetailsSPBean) {
                 view.getPandacultureDetailsSP(pandacultureDetailsSPBean);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+
+            }
+        });
+    }
+
+    @Override
+    public void getcultureSP(String pid) {
+        model.getcultureSP(pid, new MyNetWorkCallback<PandaCultureSYSPBean>() {
+            @Override
+            public void onSuccess(PandaCultureSYSPBean pandaCultureSYSPBean) {
+                view.getcultureSP(pandaCultureSYSPBean);
             }
 
             @Override

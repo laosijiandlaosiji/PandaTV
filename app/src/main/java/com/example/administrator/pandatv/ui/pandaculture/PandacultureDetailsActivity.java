@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.administrator.pandatv.R;
 import com.example.administrator.pandatv.base.BaseActivity;
+import com.example.administrator.pandatv.entity.PandaCultureSYSPBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
 import com.example.administrator.pandatv.entity.PandacultureListViewBean;
@@ -197,6 +198,11 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
 //        jcvideoplayer.setJcUserAction(new MyUserActionStandard());
 //        jcvideoplayer.startVideo();
                 VideoPlaybackUtil.getIn(PandacultureDetailsActivity.this,jcvideoplayer).setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
+    }
+
+    @Override
+    public void getcultureSP(PandaCultureSYSPBean pandaCultureSYSPBean) {
+
     }
 
     @Override
