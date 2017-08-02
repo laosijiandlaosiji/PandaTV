@@ -14,6 +14,7 @@ import com.example.administrator.pandatv.entity.PandaLiveFragmentMultiAngleBean;
 import com.example.administrator.pandatv.entity.WatchandChatBean;
 import com.example.administrator.pandatv.ui.pandalive.fragment.LiveFragmentContract;
 import com.example.administrator.pandatv.ui.pandalive.fragment.LiveFragmentPresenter;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 
 import java.util.ArrayList;
 
@@ -89,12 +90,12 @@ public class MuitiangleLiveFragment extends BaseFragment implements LiveFragment
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void closeProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override

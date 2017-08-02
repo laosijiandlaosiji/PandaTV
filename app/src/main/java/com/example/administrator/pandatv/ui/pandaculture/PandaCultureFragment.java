@@ -17,6 +17,7 @@ import com.example.administrator.pandatv.entity.PandacultureDetailsBean;
 import com.example.administrator.pandatv.entity.PandacultureDetailsSPBean;
 import com.example.administrator.pandatv.entity.PandacultureListViewBean;
 import com.example.administrator.pandatv.widget.view.BannerImageLoader;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 import com.example.administrator.pandatv.widget.view.WebViewActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -227,12 +228,12 @@ public class PandaCultureFragment extends BaseFragment implements PandacultureCo
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void closeProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override

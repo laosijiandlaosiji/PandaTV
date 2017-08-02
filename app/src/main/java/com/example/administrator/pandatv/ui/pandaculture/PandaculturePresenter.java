@@ -22,10 +22,12 @@ public class PandaculturePresenter implements PandacultureContract.Presenter {
 
     @Override
     public void start() {
+        view.showProgress();
         model.getPandaculture(new MyNetWorkCallback<PandacultureListViewBean>() {
             @Override
             public void onSuccess(PandacultureListViewBean bean) {
                 view.getListData(bean);
+                view.closeProgress();
             }
 
             @Override

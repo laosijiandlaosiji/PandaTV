@@ -21,10 +21,12 @@ public class PandaLivePresenter implements PandaLiveContract.Presenter {
 
     @Override
     public void start() {
+        view.showProgress();
         iPandaLiveModel.getPandaLive(new MyNetWorkCallback<PandaLiveTab>() {
             @Override
             public void onSuccess(PandaLiveTab pandaLiveTab) {
                 view.getPandaLiveData(pandaLiveTab);
+                view.closeProgress();
             }
 
             @Override
@@ -36,10 +38,12 @@ public class PandaLivePresenter implements PandaLiveContract.Presenter {
 
     @Override
     public void OtherFragentUrl(String vsid, String n, String serviceId, String o, String of, String p) {
+        view.showProgress();
         iPandaLiveModel.getPandaLiveQiTaFragment(vsid, n, serviceId, o, of, p, new MyNetWorkCallback<PandaLiveOtherFragentBean>() {
             @Override
             public void onSuccess(PandaLiveOtherFragentBean pandaLiveOtherFragentBean) {
                 view.getPandaLiveOtherFragent(pandaLiveOtherFragentBean);
+                view.closeProgress();
             }
 
             @Override

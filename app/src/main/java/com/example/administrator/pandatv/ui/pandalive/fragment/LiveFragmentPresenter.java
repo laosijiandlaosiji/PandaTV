@@ -22,10 +22,12 @@ public class LiveFragmentPresenter implements LiveFragmentContract.Presenter {
 
     @Override
     public void start() {
+        view.showProgress();
         iPandaLiveModel.getPandaLiveFragment(new MyNetWorkCallback<PandaLiveFragmentBean>() {
             @Override
             public void onSuccess(PandaLiveFragmentBean pandaLiveFragmentBean) {
                 view.getPandaLiveFragment(pandaLiveFragmentBean);
+                view.closeProgress();
             }
 
             @Override

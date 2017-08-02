@@ -14,6 +14,7 @@ import com.example.administrator.pandatv.entity.PandaLiveOtherFragentBean;
 import com.example.administrator.pandatv.entity.PandaLiveTab;
 import com.example.administrator.pandatv.ui.pandalive.fragment.LiveFragment;
 import com.example.administrator.pandatv.ui.pandalive.fragment.OtherFragment;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,12 +93,12 @@ public class PandaLiveFragment extends BaseFragment implements PandaLiveContract
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void closeProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override

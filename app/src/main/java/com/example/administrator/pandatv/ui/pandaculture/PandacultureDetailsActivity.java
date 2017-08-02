@@ -19,6 +19,7 @@ import com.example.administrator.pandatv.entity.PandacultureListViewBean;
 import com.example.administrator.pandatv.utils.ShareUtils;
 import com.example.administrator.pandatv.utils.SharedPreferencesUtils;
 import com.example.administrator.pandatv.utils.VideoPlaybackUtil;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 import com.example.administrator.pandatv.widget.view.JCPlayBackActivity;
 
 import java.util.ArrayList;
@@ -200,10 +201,12 @@ public class PandacultureDetailsActivity extends BaseActivity implements Pandacu
 
     @Override
     public void showProgress() {
+        CustomDialog.show(this);
     }
 
     @Override
     public void closeProgress() {
+        CustomDialog.dimiss();
     }
 
     @Override

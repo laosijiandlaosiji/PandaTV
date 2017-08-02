@@ -23,6 +23,7 @@ import com.example.administrator.pandatv.entity.PandaLiveFragmentMultiAngleBean;
 import com.example.administrator.pandatv.entity.WatchandChatBean;
 import com.example.administrator.pandatv.ui.pandalive.fragment.MultiAngleLiveFragment.MuitiangleLiveFragment;
 import com.example.administrator.pandatv.ui.pandalive.fragment.WatchAndChatFragment.WatchandChatFragment;
+import com.example.administrator.pandatv.widget.view.CustomDialog;
 import com.example.administrator.pandatv.widget.view.NonSwipeableViewPager;
 
 import java.util.ArrayList;
@@ -224,12 +225,12 @@ public class LiveFragment extends BaseFragment implements LiveFragmentContract.V
 
     @Override
     public void showProgress() {
-
+        CustomDialog.show(getActivity());
     }
 
     @Override
     public void closeProgress() {
-
+        CustomDialog.dimiss();
     }
 
     @Override
